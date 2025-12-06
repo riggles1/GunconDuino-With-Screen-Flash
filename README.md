@@ -25,11 +25,17 @@ Calibrate by moving your aim across a fully lit screen, left-right-top-bottom to
 It keeps updating minmax until the point when the trigger has been pressed 5 times, locking in the calibration. (Reconnecting the Arduino will require a new calibration)
 
 Trigger = Left-Click (and keyboard "L" pulse for the shader flash)
+
 A = Right-Click
+
 B = Middle-Click
+
 Trigger-press right after the Arduino is plugged in = Absolute Mouse XY mode (what most games will use)
+
 A-press right after the Arduino is plugged in = Joystick mode (for games with positional analog guns, not real lightguns), still uses mouse clicks for buttons.
+
 Disable Combo: Press A+B+Trigger, disables the Guncon and unsticks the mouse from your aim, so you can use a regular mouse again. Trigger press re-enables the Guncon.
+
 Holding A+B for 2 seconds = Toggles infinite hold-XY, this is for games that required continous shooting. It freezes the last seen XY-coordinates (last time light was sensed). 
   XY gets updated with every trigger pull (single screen flash)
   This is for games that weren't actual lightgun games (eg. IR). Allowing for continous shooting at the same target without other tricks like terrible black levels (making everything bright) or making a strobe     mode.
