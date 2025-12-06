@@ -1,99 +1,126 @@
 # GunconDuino
+
 PS1 Guncon controller as absolute Mouse coordinates (or Joystick) via Arduino Pro Micro or Leonardo.
 
-This is a fork based entirely on the excellent ground work done by developer Matheus Fraguas (sonik-br).
-The purpose of this fork is to make it work with the new RetroArch Shader (hold) function, making it possible to trigger a screen flash that happens before the game itself asks for coordinates, ensuring it always gets them. No more missed shots due to aiming at dark areas where tracking is lost due to no light.
+This repository is a fork based on the original work by Matheus Fraguas (sonik-br). The goal of this fork is to make the project compatible with RetroArch's **Shader (hold)** function so the project can trigger a screen flash *before* the game requests coordinates, improving reliability (no more missed shots when aiming at dark areas).
 
-Due to 1-3 frame emulation lag (setup dependent) the built-in flash wouldn't match with the original GunconDuino, some games didn't flash in the first place due to being IR instead.
-This makes it possible to play all types of gun games if set up correctly.
+Due to 1–3 frame emulation lag (setup dependent) the built-in flash in some setups didn't match the original GunconDuino behavior. This fork allows you to play a wider set of gun games when configured correctly.
 
-![Sync](docs/Enclosure.jpg)
-![Sync](docs/GunconSync.jpg)
+---
 
-Software setup:
-Within the RetroArch Hotkeys, "Shader (hold)" should be mapped to keyboard "L" for this to work, use a shader of your choice such as shaders/misc/color-mangler.slang and adjust brightess/gamma there.
-The shader should be saved for the game and then set as disabled in the game override config (video_shader_enable = "false" within the gamename.cfg).
-Use the "rawmouse" driver, this allows you to also use two GunconDuino for 2-player lightgun games.
+![Enclosure](docs/Enclosure.jpg)
 
-Adjust your setup for minimal latency, this only works with native output setups such as CRTEmudriver. 
-Within RetroArch settings, adjust the swapchain number (a different number can make a 3 frames latency difference in some cases), turn off frame delay (to be on the safe side, as it can cause some latency variablity) and use d3d11 or vulkan as the video driver.
+![Guncon Sync](docs/GunconSync.jpg)
 
-I've included the various configs for this all to work in the Preset-configs folder of this project. They can be copied over and adjusted to your setup, or simply compare them with your configs to see how you map the lightguns.
+---
 
-GunconDuino mappings and usage:
-Calibrate by moving your aim across a fully lit screen, left-right-top-bottom to get the min-max screen values. The calibration process is pretty fast, you can set your flash shader to enabled to do this.
-It keeps updating minmax until the point when the trigger has been pressed 5 times, locking in the calibration. (Reconnecting the Arduino will require a new calibration)
+## Software setup (RetroArch)
 
-Trigger = Left-Click (and keyboard "L" pulse for the shader flash)
+1. In RetroArch Hotkeys map **"Shader (hold)"** to the keyboard key **L**.
+2. Choose a shader (example: `shaders/misc/color-mangler.slang`) and adjust brightness/gamma to taste.
+3. Save the shader for the game, then disable it in the game's override config: `video_shader_enable = "false"` in `gamename.cfg`.
+4. Use the **rawmouse** input driver — this allows using two GunconDuino units for 2-player games.
+5. Select the Arduino (might be called Leonardo) as your mouse device ID. 
 
+### Latency and video driver recommendations
+
+* Use native RGB output setups such as **CRTEmudriver** for minimal latency.
+* Use  **d3d11** or **vulkan** (setup and game dependent) as the video driver in RetroArch.
+* Adjust the swapchain number (the wrong setting can cost several frames of latency).
+* Turn off frame delay to avoid latency variability.
+
+Preset configs for this setup are included in the `Preset-configs` folder — copy or compare them with your own configs.
+
+---
+
+## Usage & mappings
+
+**Calibration:** Move the gun across a fully lit screen (left-right, top-bottom) to capture min/max screen values. Calibration updates min/max until the trigger is pressed **5 times**, at which point calibration locks. Reconnecting the Arduino requires recalibration.
+
+```
+Trigger = Left-Click (and keyboard "L" pulse for shader flash)
 A = Right-Click
-
 B = Middle-Click
+Press **Trigger** immediately after plugging in = **Absolute Mouse XY mode** (most lightgun games use this).
+Press **A** immediately after plugging in = **Joystick mode** (for positional analog guns; still sends mouse clicks for buttons).
 
-Trigger-press right after the Arduino is plugged in = Absolute Mouse XY mode (what most games will use)
+* Disable / re-enable: Press A+B+Trigger to disable the Guncon and unstuck the mouse (use a regular mouse). Press Trigger again to re-enable.
 
-A-press right after the Arduino is plugged in = Joystick mode (for games with positional analog guns, not real lightguns), still uses mouse clicks for buttons.
+* Hold-XY (toggle): Hold **A + B for 2 seconds** to toggle infinite Hold-XY. This freezes the last-seen XY coordinates (useful for games that require continuous shooting or are IR-based).
+XY gets updated on every trigger pull (single-screen flash).
+```
 
-Disable Combo: Press A+B+Trigger, disables the Guncon and unsticks the mouse from your aim, so you can use a regular mouse again. Trigger press re-enables the Guncon.
+**MAME / RetroArch mapping notes:**
 
-Holding A+B for 2 seconds = Toggles infinite hold-XY, this is for games that required continous shooting. It freezes the last seen XY-coordinates (last time light was sensed). 
-  XY gets updated with every trigger pull (single screen flash)
-  This is for games that weren't actual lightgun games (eg. IR). Allowing for continous shooting at the same target without other tricks like terrible black levels (making everything bright) or making a strobe     mode.
-  Some games like those that used the SNES Superscope opted to use bright graphics on screen at all times instead of flashing, those allowed for continous shooting without strobing.
+* MAME lightgun games that used real lightguns (e.g. Point Blank) use **GunX** and **GunY**. 
+* In `\system\mame\ini\mame.ini`, enable lightguns (not mouse). Use my included `mame.ini` if you don't have it.
+* In the MAME core options, enable the .ini read (so it reads it).
+* In RetroArch's MAME core input settings, map **GunX** and **GunY** (do NOT map as MouseX/MouseY).
+* You will likely need to manually edit the RetroArch and MAME-core configs, mapping via the built-in configurators may not add the required lightgun axes.
 
+---
 
-Use the RA MAME-core config examples I've provided here for mappings to work, lightgun games in MAME that used actual lightguns (not positional analog), such as Point Blank use GunX and GunY.
-Within the mame.ini enable lightguns (not mouse, the difference is that lightguns have absolute position).
-Un the RetroArch MAME core, in general input, map GunX and GunY (should NOT be MouseX MouseY).
-You'll most likely need to manually edit the RetroArch and MAME-core configs to add the lightgun mappings, rather than try map them with the built in button mapping configurators.
+## How it works
 
-How this works:
-Instantly at any trigger hardware press it sends a keyboard "L" key pulse. (triggering the RA shader hold flash) followed by a buffered click, ensuring the game gets both valid XY-coordinates and a click.
-Trigger presses for Mouse-Left-Click are continously buffered, nothing gets lost.
-The buffer makes it possible to spam the trigger as fast as possible and never have it miss a shot. 
-This trigger buffer is set to 34ms and there's a liniency with the XY-coordinate hold, but you may want to fine tune it for some laggier setups. (Always tackle your setup lag first however)
-Hold-XY: Last XY values are held for 34ms (lag leniency failsafe)
+* On any hardware trigger press the Arduino sends a keyboard **L** pulse (to trigger the shader flash) followed by a buffered mouse click so the game receives valid XY coordinates and a click.
+* Trigger presses are continuously buffered so you can spam the trigger without missing shots.
+* Default trigger buffer: **34 ms**. Last XY values are held for **34 ms** as a lag leniency failsafe.
+* These ms values can be adjusted in the .ino, but please tune your PC>CRT and RA setup first to eliminate lag there.
+---
 
-Misc-improvements over the original GunconDuino:
-Screen XY polling is made to be faster without breaking bottom of CRT screen light sensing.
-Buttons are polled separately and as fast as possible, since they're not limited by CRT scan rate.
-Joystick mode now still sends mouse clicks for A/B/Trigger, all lightgun A, B, Trigger presses are seen as mouse clicks. (So these are still mapped the same in the MAME-core)
-A+B+Trigger disabling now makes sure clicks don't get stuck as pressed.
+## Improvements over original GunconDuino
 
+* Faster screen XY polling while preserving bottom-of-CRT sensing.
+* Buttons polled independently at maximum rate.
+* Joystick mode still sends mouse clicks for A/B/Trigger to not need different MAME mappings.
+* A+B+Trigger disable ensures clicks cannot remain stuck pressed.
 
+---
 
-Build instructions:
+## Build instructions
 
-PlayStation accessories works in 3.3v. You will need a 5v to 3.3v voltage regulator, a level shifter (photo below, the level shifter is a MUST or you will likely damage the Guncon over time),
-an Arduino Pro Micro (my recommendation) or a Leonardo, and a PS1/PS2 female connector (available on aliexpress).
-I personally use an off the shelf level shifter and a voltage regulator in my build. 
-The shield Sonic-br recommends incorporates these into a single PCB, but it's otherwise the same thing.
+**Required hardware:**
+* Arduino Pro Micro (USB-C) or Leonardo.
+* PS1 accessories operate at **3.3V** (you must use a 5V → 3.3V regulator)
+* **Level shifter** (required, without it the Guncon may be damaged over time)
+* **Arduino Pro Micro** (recommended) or **Arduino Leonardo**
+* PS1/PS2 female connector 
+* A suitable enclosure (I used a 80x50x26mm one)
+(All of these parts are available on AliExpress)
 
-####[shield](https://github.com/SukkoPera/PsxControllerShield)
+You can custom build a circuit with a level shifter and voltage regulator, or get the shield below which integrates these components.
 
-#### If not using the shield then connect it this way:
+**Shield:**
+
+* [https://github.com/SukkoPera/PsxControllerShield](https://github.com/SukkoPera/PsxControllerShield)
+
+### If not using the shield, wiring images:
 
 ![controller pinout](docs/psx.png)
+
 ![wiring](docs/Guncon_Voltage.png)
+
 ![leonardo icsp header](docs/icsp_header.png)
 
-Before using it you will need the to install the libraries [PsxNewLib](https://github.com/SukkoPera/PsxNewLib) and [ArduinoJoystickLibrary](https://github.com/MHeironimus/ArduinoJoystickLibrary).
-(I've included the libraries in this release, make sure to delete duplicate libraries located in ThisPC/Documents/Arduino/libraries/ 
-If there are problems flashing the .ino script to the Arduino Pro Micro, try an older version of ArduinoIDE)
+**Libraries required:**
 
-This only works on a CRT at standard resolutions, native output setups such as CRTEmudriver.
+* [PsxNewLib](https://github.com/SukkoPera/PsxNewLib)
+* [ArduinoJoystickLibrary](https://github.com/MHeironimus/ArduinoJoystickLibrary)
 
-The official guncon works perfectly.
-With a 3rd party gun the readings are not correct. (might be fixed by customizing minmax values in the script)
- 
-### Credits
+> I have included the libraries in this release. Remove duplicate copies from `ThisPC/Documents/Arduino/libraries/` if present.
+**Flashing tip:** If you have trouble flashing the `.ino` to a Pro Micro, try an older Arduino IDE version.
+**Important:** This project is intended for CRTs at standard resolutions and native output setups (CRTEmudriver or similar).
 
-Original GunconDuino code [GunconDuino](https://github.com/sonik-br/GunconDuino) by sonic-br.
+* Official Guncon behaves correctly,but third-party guns may produce incorrect readings (adjusting values in the script may help).
 
-This piece of software would not be possible without the amazing [PsxNewLib](https://github.com/SukkoPera/PsxNewLib) by SukkoPera.
+---
 
-It also uses a modified version of [absmouse](https://github.com/jonathanedgecombe/absmouse) by jonathanedgecombe.
+## Credits
 
-[ArduinoJoystickLibrary](https://github.com/MHeironimus/ArduinoJoystickLibrary) by MHeironimus.
+* Original GunconDuino code: [https://github.com/sonik-br/GunconDuino](https://github.com/sonik-br/GunconDuino)
+* PsxNewLib by SukkoPera: [https://github.com/SukkoPera/PsxNewLib](https://github.com/SukkoPera/PsxNewLib)
+* Modified absmouse by jonathanedgecombe: [https://github.com/jonathanedgecombe/absmouse](https://github.com/jonathanedgecombe/absmouse)
+* ArduinoJoystickLibrary by MHeironimus: [https://github.com/MHeironimus/ArduinoJoystickLibrary](https://github.com/MHeironimus/ArduinoJoystickLibrary)
+* PS controller pinout reference by CuriousInventor: [https://store.curiousinventor.com/guides/PS2](https://store.curiousinventor.com/guides/PS2)
 
-PS controller pinout by [curiousinventor](https://store.curiousinventor.com/guides/PS2).
+---
