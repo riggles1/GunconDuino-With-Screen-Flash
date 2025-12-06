@@ -6,6 +6,8 @@ This repository is a fork based on the original work by Matheus Fraguas (sonik-b
 
 Due to 1-3 frame emulation lag (setup dependent) the built-in flash in some setups didn't match the original GunconDuino behavior. This fork allows you to play a wider set of gun games when configured correctly.
 
+My CTEmudriver setup guide that I use for this can be found in the description here: https://youtu.be/Fdo5z1mQ748
+
 ---
 
 <img src="docs/Enclosure.jpg" width="400"> <img src="docs/GunconSync.jpg" width="400">
