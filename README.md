@@ -1,11 +1,16 @@
 # GunconDuino
-
 PS1 Guncon controller as absolute Mouse coordinates (or Joystick) via Arduino Pro Micro or Leonardo.
 
 This is a fork based entirely on the excellent ground work done by developer Matheus Fraguas (sonik-br).
-The purpose of this fork is to make it work with the new RetroArch Shader (hold) function, it possible to trigger a screen flash at trigger press, ensuring you always get the screen coordinates. 
-Due to 1-3 frame emulation lag (setup dependent) any built in game flash doesn't work with the regular GunconDuino, other games didn't screen flash to begin with as they used IR.
+The purpose of this fork is to make it work with the new RetroArch Shader (hold) function, making it possible to trigger a screen flash that happens before the game itself asks for coordinates, ensuring it always gets them. No more missed shots due to aiming at dark areas where tracking is lost due to no light.
 
+Due to 1-3 frame emulation lag (setup dependent) the built-in flash wouldn't match with the original GunconDuino, some games didn't flash in the first place due to being IR instead.
+This makes it possible to play all types of gun games if set up correctly.
+
+![Sync](docs/Enclosure.jpg)
+![Sync](docs/GunconSync.jpg)
+
+Software setup:
 Within the RetroArch Hotkeys, "Shader (hold)" should be mapped to keyboard "L" for this to work, use a shader of your choice such as shaders/misc/color-mangler.slang and adjust brightess/gamma there.
 The shader should be saved for the game and then set as disabled in the game override config (video_shader_enable = "false" within the gamename.cfg).
 Use the "rawmouse" driver, this allows you to also use two GunconDuino for 2-player lightgun games.
@@ -17,25 +22,24 @@ I've included the various configs for this all to work in the Preset-configs fol
 
 GunconDuino mappings and usage:
 Calibrate by moving your aim across a fully lit screen, left-right-top-bottom to get the min-max screen values. The calibration process is pretty fast, you can set your flash shader to enabled to do this.
-It keeps updating minmax until the point when the trigger has been pressed 5 times, locking in the calibration. (reconnecting the Arduino will require a new calibration)
+It keeps updating minmax until the point when the trigger has been pressed 5 times, locking in the calibration. (Reconnecting the Arduino will require a new calibration)
 
-Trigger = Left-Click
+Trigger = Left-Click (and keyboard "L" pulse for the shader flash)
 A = Right-Click
 B = Middle-Click
 Trigger-press right after the Arduino is plugged in = Absolute Mouse XY mode (what most games will use)
 A-press right after the Arduino is plugged in = Joystick mode (for games with positional analog guns, not real lightguns), still uses mouse clicks for buttons.
 Disable Combo: Press A+B+Trigger, disables the Guncon and unsticks the mouse from your aim, so you can use a regular mouse again. Trigger press re-enables the Guncon.
 Holding A+B for 2 seconds = Toggles infinite hold-XY, this is for games that required continous shooting. It freezes the last seen XY-coordinates (last time light was sensed). 
-                             XY gets updated with every trigger pull (single screen flash)
-                             This is for games that weren't actual lightgun games (eg. IR). Allowing for continous shooting at the same target without other tricks like terrible black levels (making everything                                 bright) or making a strobe mode.
-                             Some games like those that used the SNES Superscope opted to use bright graphics on screen at all times instead of flashing, those allowed for continous shooting without strobing.
+  XY gets updated with every trigger pull (single screen flash)
+  This is for games that weren't actual lightgun games (eg. IR). Allowing for continous shooting at the same target without other tricks like terrible black levels (making everything bright) or making a strobe     mode.
+  Some games like those that used the SNES Superscope opted to use bright graphics on screen at all times instead of flashing, those allowed for continous shooting without strobing.
 
 
 Use the RA MAME-core config examples I've provided here for mappings to work, lightgun games in MAME that used actual lightguns (not positional analog), such as Point Blank use GunX and GunY.
 Within the mame.ini enable lightguns (not mouse, the difference is that lightguns have absolute position).
 Un the RetroArch MAME core, in general input, map GunX and GunY (should NOT be MouseX MouseY).
 You'll most likely need to manually edit the RetroArch and MAME-core configs to add the lightgun mappings, rather than try map them with the built in button mapping configurators.
-
 
 How this works:
 Instantly at any trigger hardware press it sends a keyboard "L" key pulse. (triggering the RA shader hold flash) followed by a buffered click, ensuring the game gets both valid XY-coordinates and a click.
