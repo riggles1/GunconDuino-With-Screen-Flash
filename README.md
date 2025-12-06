@@ -97,11 +97,9 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 ### If not using the shield, wiring images:
 
-![controller pinout](docs/psx.png)
-
-![wiring](docs/Guncon_Voltage.png)
-
-![leonardo icsp header](docs/icsp_header.png)
+<img src="docs/psx.png" width="400">
+<img src="docs/Guncon_Voltage.png" width="400">
+<img src="docs/icsp_header.png" width="400">
 
 **Libraries required:**
 
