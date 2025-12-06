@@ -30,7 +30,7 @@ My CTEmudriver setup guide that I use for this can be found in the description h
 * Adjust the swapchain number (the wrong setting can cost several frames of latency).
 * Turn off frame delay to avoid latency variability.
 
-Preset configs for this setup are included in the `Preset-configs` folder — copy or compare them with your own configs.
+Preset configs for this setup are included in the `Preset-configs` folder, copy or compare them with your own configs.
 
 ---
 
