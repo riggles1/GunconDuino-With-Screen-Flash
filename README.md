@@ -20,7 +20,7 @@ My CTEmudriver setup guide that I use for this can be found in the description h
 * In RetroArch Hotkeys map **"Shader (hold)"** to the keyboard key **L**.
 * Choose a shader (example: `shaders/misc/color-mangler.slang`) and adjust brightness/gamma to taste.
 * Save the shader for the game, then disable it in the game's override config: `video_shader_enable = "false"` in `gamename.cfg`.
-* Use the **rawmouse** input driver — this allows using two GunconDuino units for 2-player games.
+* Use the **rawmouse** input driver, this allows using two GunconDuino units for 2-player games.
 * Select the Arduino (might be called Leonardo) as your mouse device ID. 
 
 ### Latency and video driver recommendations
