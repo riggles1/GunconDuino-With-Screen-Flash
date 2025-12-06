@@ -16,11 +16,11 @@ Due to 1–3 frame emulation lag (setup dependent) the built-in flash in some se
 
 ## Software setup (RetroArch)
 
-1. In RetroArch Hotkeys map **"Shader (hold)"** to the keyboard key **L**.
-2. Choose a shader (example: `shaders/misc/color-mangler.slang`) and adjust brightness/gamma to taste.
-3. Save the shader for the game, then disable it in the game's override config: `video_shader_enable = "false"` in `gamename.cfg`.
-4. Use the **rawmouse** input driver — this allows using two GunconDuino units for 2-player games.
-5. Select the Arduino (might be called Leonardo) as your mouse device ID. 
+* In RetroArch Hotkeys map **"Shader (hold)"** to the keyboard key **L**.
+* Choose a shader (example: `shaders/misc/color-mangler.slang`) and adjust brightness/gamma to taste.
+* Save the shader for the game, then disable it in the game's override config: `video_shader_enable = "false"` in `gamename.cfg`.
+* Use the **rawmouse** input driver — this allows using two GunconDuino units for 2-player games.
+* Select the Arduino (might be called Leonardo) as your mouse device ID. 
 
 ### Latency and video driver recommendations
 
@@ -41,12 +41,15 @@ Preset configs for this setup are included in the `Preset-configs` folder — co
 Trigger = Left-Click (and keyboard "L" pulse for shader flash)
 A = Right-Click
 B = Middle-Click
-Press **Trigger** immediately after plugging in = **Absolute Mouse XY mode** (most lightgun games use this).
-Press **A** immediately after plugging in = **Joystick mode** (for positional analog guns; still sends mouse clicks for buttons).
+Press "Trigger" immediately after plugging in = "Absolute Mouse XY mode" (most lightgun games use this).
+Press "A" immediately after plugging in = "Joystick mode" 
+(for positional analog guns, still sends mouse clicks for buttons).
 
-* Disable / re-enable: Press A+B+Trigger to disable the Guncon and unstuck the mouse (use a regular mouse). Press Trigger again to re-enable.
+Disable/re-enable: Press A+B+Trigger to disable the Guncon and unstuck the mouse (use a regular mouse). 
+Press Trigger again to re-enable.
 
-* Hold-XY (toggle): Hold **A + B for 2 seconds** to toggle infinite Hold-XY. This freezes the last-seen XY coordinates (useful for games that require continuous shooting or are IR-based).
+Hold-XY (toggle): Hold **A + B for 2 seconds** to toggle infinite Hold-XY. 
+This freezes the last-seen XY coordinates (useful for games that require continuous shooting or are IR-based).
 XY gets updated on every trigger pull (single-screen flash).
 ```
 
@@ -108,10 +111,10 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 * [ArduinoJoystickLibrary](https://github.com/MHeironimus/ArduinoJoystickLibrary)
 
 > I have included the libraries in this release. Remove duplicate copies from `ThisPC/Documents/Arduino/libraries/` if present.
-**Flashing tip:** If you have trouble flashing the `.ino` to a Pro Micro, try an older Arduino IDE version.
-**Important:** This project is intended for CRTs at standard resolutions and native output setups (CRTEmudriver or similar).
+Flashing tip: If you have trouble flashing the `.ino` to a Pro Micro, try an older Arduino IDE version.
+Important: This project is intended for CRTs at standard resolutions and native output setups (CRTEmudriver or similar).
 
-* Official Guncon behaves correctly,but third-party guns may produce incorrect readings (adjusting values in the script may help).
+Official Guncon behaves correctly,but third-party guns may produce incorrect readings (adjusting values in the script may help).
 
 ---
 
