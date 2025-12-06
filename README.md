@@ -58,7 +58,7 @@ XY gets updated on every trigger pull (single-screen flash).
 
 **MAME / RetroArch mapping notes:**
 
-* MAME lightgun games that used real lightguns (e.g. Point Blank) use **GunX** and **GunY**. 
+* MAME lightgun games that used real lightguns (e.g. Point Blank) use **GunX** and **GunY**. (GUNCODE_1_XAXIS and GUNCODE_1_YAXIS in the saves/mame/cfg/ .cfg for the game)
 * In `\system\mame\ini\mame.ini`, enable lightguns (not mouse). Use my included `mame.ini` if you don't have it.
 * In the MAME core options, enable the .ini read (so it reads it).
 * In RetroArch's MAME core input settings, map **GunX** and **GunY** (do NOT map as MouseX/MouseY).
