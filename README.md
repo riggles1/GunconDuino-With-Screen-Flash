@@ -63,7 +63,6 @@ an Arduino Pro Micro (my recommendation) or a Leonardo, and a PS1/PS2 female con
 I personally use an off the shelf level shifter and a voltage regulator in my build. 
 The shield Sonic-br recommends incorporates these into a single PCB, but it's otherwise the same thing.
 
-
 ####[shield](https://github.com/SukkoPera/PsxControllerShield)
 
 #### If not using the shield then connect it this way:
@@ -73,7 +72,8 @@ The shield Sonic-br recommends incorporates these into a single PCB, but it's ot
 ![leonardo icsp header](docs/icsp_header.png)
 
 Before using it you will need the to install the libraries [PsxNewLib](https://github.com/SukkoPera/PsxNewLib) and [ArduinoJoystickLibrary](https://github.com/MHeironimus/ArduinoJoystickLibrary).
-(I've included the libraries in this release)
+(I've included the libraries in this release, make sure to delete duplicate libraries located in ThisPC/Documents/Arduino/libraries/ 
+If there are problems flashing the .ino script to the Arduino Pro Micro, try an older version of ArduinoIDE)
 
 This only works on a CRT at standard resolutions, native output setups such as CRTEmudriver.
 
