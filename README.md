@@ -7,6 +7,8 @@ Light sensing now has a 34ms leniency window in case light is lost before the tr
 
 Due to 1-3 frame emulation lag (setup dependent) the built-in flash in some setups didn't match the original GunconDuino timings. This fork allows you to play any gun games when configured correctly.
 
+Gunconduino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
+
 My CRTEmudriver setup guide that I use for this can be found in the video description here: https://youtu.be/Fdo5z1mQ748
 
 ---
