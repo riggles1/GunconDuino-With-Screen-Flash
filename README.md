@@ -8,7 +8,7 @@ Due to 1–3 frame emulation lag (setup dependent) the built-in flash in some se
 
 ---
 
-![Enclosure](docs/Enclosure.jpg)
+<img src="docs/Enclosure.jpg" width="400">
 
 ![Guncon Sync](docs/GunconSync.jpg)
 
