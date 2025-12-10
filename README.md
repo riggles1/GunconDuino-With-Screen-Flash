@@ -105,6 +105,9 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 <img src="docs/schematics.png" width="400">
 
+The wiring inside a playstation controller cable, for reference.
+<img src="docs/psx.png" width="400">
+
 **Libraries required:**
 
 * [PsxNewLib](https://github.com/SukkoPera/PsxNewLib)
