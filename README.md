@@ -92,6 +92,7 @@ XY gets updated on every trigger pull (single-screen flash).
 * **Arduino Pro Micro** (recommended) or **Arduino Leonardo**
 * PS1/PS2 female connector 
 * A suitable enclosure (I used a 80x50x26mm one)
+
 (All of these parts are available on AliExpress)
 
 You can custom build a circuit with a level shifter and voltage regulator, or get the shield below which integrates these components.
