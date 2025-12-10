@@ -115,7 +115,7 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 Flashing tip: If you have trouble flashing the `.ino` to a Pro Micro, try an older Arduino IDE version.
 Important: This project is intended for CRTs at standard resolutions and native output setups (CRTEmudriver or similar).
 
-Official Guncon behaves correctly,but third-party guns may produce incorrect readings (adjusting values in the script may help).
+Official Guncons behaves correctly, but third-party guns may produce incorrect readings (adjusting values in the script may help).
 
 ---
 
