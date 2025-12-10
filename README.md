@@ -105,7 +105,6 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 <img src="docs/psx.png" width="400">
 <img src="docs/Guncon_Voltage.png" width="400">
-<img src="docs/icsp_header.png" width="400">
 
 **Libraries required:**
 
