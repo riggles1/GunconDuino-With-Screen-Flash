@@ -103,11 +103,11 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 ### If not using the shield (wiring using the Ps1/Ps2 port, female connector):
 
-<img src="docs/schematics.png" width="400">
+<img src="docs/schematics.png" width="600">
 
 The wiring inside a playstation controller cable, for reference.
 
-<img src="docs/psx.png" width="400">
+<img src="docs/psx.png" width="250">
 
 **Libraries required:**
 
