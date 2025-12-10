@@ -9,7 +9,7 @@ Due to 1-3 frame emulation lag (setup dependent) the built-in flash in games did
 
 For now, due to the flash shader being in the same render pipeline as the game, it's also affected by the 2 frame lag, so the input lag becomes 5 frames total. 
 
-(Trigger>2frames>1frame flash,XY+TriggerStatesSent>2frames>Game reaction)
+(Trigger>2Frames>1Frame Flash, XY+TriggerStatesSent>2Frames>Game Reaction)
 
 However I've included an optimization where it will instantly send the trigger and XY states if the Guncon already has light before the flash shader.
 Meaning that any moderately bright thing you aim at (a majority of targets), will be down to just 3 frames of input lag.
