@@ -3,11 +3,19 @@
 PS1 Guncon controller as absolute Mouse coordinates (or Joystick) via Arduino Pro Micro or Leonardo.
 
 This repository is a fork based on the original work by Matheus Fraguas (sonik-br). The goal of this fork is to make the project compatible with RetroArch's **Shader (hold)** function so that a screen flash is triggered and sent together with the trigger press when the game requests it, improving reliability (no more missed shots when aiming at dark areas no matter how fast you shoot).
-Light sensing now has a 34ms leniency window in case light is lost before the trigger press gets sent to the game.
+Light sensing has a 48ms leniency window in case light is lost before the trigger press gets sent to the game (XY will always immediately update again at any frame light is sensed, it's just there if light is lost very momentarily, so there's zero latency drawbacks with this).
 
-Due to 1-3 frame emulation lag (setup dependent) the built-in flash in games didn't match the original GunconDuino timings. The new shader flash allows you to play any gun games when configured correctly.
+Due to 1-3 frame emulation lag (setup dependent) the built-in flash in games didn't match the original GunconDuino timings. The new shader flash allows you to play any gun games when configured correctly. The script is set up for 1-2 frames of emulation lag maximum (2 frames max = 34ms, bufferDelay be set to higher value in the .ino  ```bufferDelayUs = 34000UL;``` if you can't bring down the input lag of your own setup.
 
-Gunconduino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
+For now, due to the flash shader being in the same render pipeline as the game, it's also affected by the 2 frame lag, so the input lag becomes 5 frames total. 
+
+(Trigger>2frames>1frame flash,XY+TriggerStatesSent>2frames>Game reaction)
+
+However I've included an optimization where it will instantly send the trigger and XY states if the Guncon already has light before the flash shader.
+Meaning that any moderately bright thing you aim at (a majority of targets), will be down to just 3 frames of input lag.
+And it'll be down to just 1 frame IF the game is supported by runahead (set to 2).
+
+GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
 My CRTEmudriver setup guide that I use for this can be found in the video description here: https://youtu.be/Fdo5z1mQ748
 
