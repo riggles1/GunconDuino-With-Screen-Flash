@@ -39,13 +39,13 @@
  * Once the Trigger has been pressed 5 times, the XY min/max values will be locked from calibration (until Arduino disconnect)
  *
  * For the RetroArch Shader (hold) screen flash function, there's an immediate 24 ms Keyboard 'l' pulse on every trigger hardware press 
- * Hold-XY: When light is lost, keep sending last valid XY for 34 ms (Gives a bit more leeway ensuring shots don't miss, my default is 34ms)
+ * Hold-XY: When light is lost, keep sending last valid XY for 48 ms (Gives a bit more leeway ensuring shots don't miss, my default is 48ms)
  *
  *
  * Trigger = Mouse Left Click (as well as a keyboard "L" key pulse), A = Mouse Right Click, B = Mouse Middle Click
  *
  *******************************************************************************/
-
+ 
 #include <PsxControllerHwSpi.h>
 #include "AbsMouse.h"
 #include <Joystick.h>
@@ -118,6 +118,10 @@ unsigned long lastTriggerEventTimeUs = 0;
 bool LpulseActive = false;
 unsigned long LpulseStartUs = 0;
 
+// Buffer-cancel state (for first-light-after-press logic)
+bool firstLightSinceTrigger = false;
+bool triggerUsedImmediate = false;
+
 // Buffered click queue
 enum BufferedEventType { EVT_DOWN = 0, EVT_UP = 1 };
 
@@ -169,7 +173,7 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 // hold-XY state
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
-const unsigned long HOLD_XY_US = 34000UL; // 34ms (holds XY for this amount of time after losing light)
+const unsigned long HOLD_XY_US = 48000UL; // 48ms (holds XY for this amount of time after losing light)
 bool holdXYActive = false;
 
 word convertRange(double gcMin, double gcMax, double value) {
@@ -218,6 +222,10 @@ void handleTrigger() {
             triggerDown = true;
             lastTriggerEventTimeUs = nowUs;
 
+            // arm buffer-cancel state for this trigger press
+            firstLightSinceTrigger = true;
+            triggerUsedImmediate = false;
+
             // Immediate l pulse (This is never buffered)
             Keyboard.press('l');
             LpulseActive = true;
@@ -233,8 +241,17 @@ void handleTrigger() {
         triggerDown = false;
         lastTriggerEventTimeUs = nowUs;
 
-        // Buffer the event scheduled at now + bufferDelayUs
-        pushBufferedEvent(EVT_UP, nowUs + bufferDelayUs);
+        if (triggerUsedImmediate) {
+            // This shot switched to immediate mode on first light -> release immediately
+            AbsMouse.release(MOUSE_LEFT);
+        } else {
+            // Buffer the event scheduled at now + bufferDelayUs
+            pushBufferedEvent(EVT_UP, nowUs + bufferDelayUs);
+        }
+
+        // reset buffer-cancel state for next trigger press
+        firstLightSinceTrigger = false;
+        triggerUsedImmediate = false;
     }
 
     // Non-blocking l pulse release timer
@@ -270,6 +287,24 @@ void onLightSensed(word x, word y) {
     holdXYActive = false; // cancel any hold-XY active
     lastX = x;
     lastY = y;
+
+    // Buffer canceling: if trigger is held and this is the first light since press,
+    // cancel buffered DOWN for this shot and press immediately.
+    if (triggerDown && firstLightSinceTrigger && !triggerUsedImmediate) {
+        // remove the most recently queued event (the DOWN for this trigger)
+        if (bufferedQueueCount > 0) {
+            int lastIndex = (bufferedQueueTail - 1 + BUFFERED_QUEUE_SIZE) % BUFFERED_QUEUE_SIZE;
+            // Optional sanity check: ensure it's a DOWN event
+            if (bufferedQueue[lastIndex].type == EVT_DOWN) {
+                bufferedQueueTail = lastIndex;
+                bufferedQueueCount--;
+            }
+        }
+
+        AbsMouse.press(MOUSE_LEFT);
+        triggerUsedImmediate = true;
+        firstLightSinceTrigger = false;
+    }
 }
 
 void readGuncon() {
@@ -285,6 +320,11 @@ void readGuncon() {
         enableReport = false;
         enableMouseMove = false;
         enableJoystick = false;
+
+        // reset trigger/buffer-cancel state
+        triggerDown = false;
+        firstLightSinceTrigger = false;
+        triggerUsedImmediate = false;
 
         delay(1000);
         return;
