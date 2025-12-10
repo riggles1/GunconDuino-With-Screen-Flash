@@ -101,7 +101,7 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 * [https://github.com/SukkoPera/PsxControllerShield](https://github.com/SukkoPera/PsxControllerShield)
 
-### If not using the shield, wiring images (female/port):
+### If not using the shield (wiring using the Ps1/Ps2 port, female connector):
 
 <img src="docs/schematics.png" width="400">
 
