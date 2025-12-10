@@ -5,7 +5,7 @@ PS1 Guncon controller as absolute Mouse coordinates (or Joystick) via Arduino Pr
 This repository is a fork based on the original work by Matheus Fraguas (sonik-br). The goal of this fork is to make the project compatible with RetroArch's **Shader (hold)** function so that a screen flash is triggered and sent together with the trigger press when the game requests it, improving reliability (no more missed shots when aiming at dark areas no matter how fast you shoot).
 Light sensing now has a 34ms leniency window in case light is lost before the trigger press gets sent to the game.
 
-Due to 1-3 frame emulation lag (setup dependent) the built-in flash in some setups didn't match the original GunconDuino timings. The new shader flash allows you to play any gun games when configured correctly.
+Due to 1-3 frame emulation lag (setup dependent) the built-in flash in games didn't match the original GunconDuino timings. The new shader flash allows you to play any gun games when configured correctly.
 
 Gunconduino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
