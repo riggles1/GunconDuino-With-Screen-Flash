@@ -6,17 +6,6 @@ This repository is a fork based on the original work by Matheus Fraguas (sonik-b
 
 Due to 1-3 frame emulation lag (setup dependent) the built-in flash in games didn't match the original GunconDuino timings. The new shader flash allows you to play any gun games when configured correctly. The script is set up for 1-2 frames of emulation lag maximum (2 frames max = 34ms, bufferDelay be set to higher value in the .ino  ```bufferDelayUs = 34000UL;``` if you can't bring down the input lag of your own setup.
 
-For now, due to the flash shader being in the same render pipeline as the game, it's also affected by the 2 frame lag, so the input lag becomes 5 frames total. 
-In the future maybe we could have a screen flasher that bypasses the game render pipeline. 
-That said with extensive testing and comparing Point Blank MAME with my real PS1, I can zip the aim left-right as fast as possible, firing at the edges
-and it'll always hit them, it doesn't lag behind my hand movement and never fails delivering the shot.
-
-(Trigger>2Frames>1Frame Flash, XY+TriggerStatesSent>2Frames>Game Reaction)
-
-However I've included an optimization where it will instantly send the trigger and XY states if the Guncon already has light before the flash shader.
-Meaning that any moderately bright thing you aim at (a majority of targets), will be down to just 3 frames of input lag.
-And it'll be down to just 1 frame IF the game is supported by runahead (set to 2).
-
 GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
 My CRTEmudriver setup guide that I use for this can be found in the video description here: https://youtu.be/Fdo5z1mQ748
@@ -41,6 +30,7 @@ My CRTEmudriver setup guide that I use for this can be found in the video descri
 * Use  **d3d11** or **vulkan** (setup and game dependent) as the video driver in RetroArch.
 * Adjust the swapchain number (the wrong setting can cost several frames of latency).
 * Turn off frame delay to avoid latency variability.
+* Change threaded rendering in both RA and the MAME core options+.ini.
 
 Preset configs for this setup are included in the `Preset-configs` folder, copy or compare them with your own configs.
 
@@ -83,12 +73,20 @@ XY gets updated on every trigger pull (single-screen flash).
 * Default trigger buffer: **34 ms**. For 1-2 frames of lag, if you absolutely have to (inspect lag causes first) you can increase this delay.
 * Light sensing has a 48ms leniency window in case light is lost before the trigger press gets sent to the game (XY will always immediately update again at any frame light is sensed, it's just there if light is lost very momentarily, so there's zero latency drawbacks with this).
 
+* For now, due to the flash shader being in the same render pipeline as the game, it's also affected by the 2 frame lag, so the input lag becomes 5 frames total. 
+In the future maybe we could have a screen flasher that bypasses the game render pipeline. 
+That said with extensive testing and comparing Point Blank MAME with my real PS1, I can zip the aim left-right as fast as possible, firing at the edges
+and it'll always hit them, it doesn't lag behind my hand movement and never fails delivering the shot.
 
-* These ms values can be adjusted in the .ino, but please tune your PC>CRT and RA setup first to eliminate lag there.
+(Trigger>2Frames>1Frame Flash, XY+TriggerStatesSent>2Frames>Game Reaction)
+
+However I've included an optimization where it will instantly send the trigger and XY states if the Guncon already has light before the flash shader.
+Meaning that any moderately bright thing you aim at (a majority of targets), will be down to just 3 frames of input lag.
+And it'll be down to just 1 frame IF the game is supported by runahead (set to 2).
 
 ---
 
-## Improvements over original GunconDuino
+## Misc improvements over original GunconDuino
 
 * Faster screen XY polling while preserving bottom-of-CRT sensing.
 * Buttons polled independently at maximum rate.
