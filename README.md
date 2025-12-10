@@ -7,6 +7,9 @@ This repository is a fork based on the original work by Matheus Fraguas (sonik-b
 Due to 1-3 frame emulation lag (setup dependent) the built-in flash in games didn't match the original GunconDuino timings. The new shader flash allows you to play any gun games when configured correctly. The script is set up for 1-2 frames of emulation lag maximum (2 frames max = 34ms, bufferDelay be set to higher value in the .ino  ```bufferDelayUs = 34000UL;``` if you can't bring down the input lag of your own setup.
 
 For now, due to the flash shader being in the same render pipeline as the game, it's also affected by the 2 frame lag, so the input lag becomes 5 frames total. 
+In the future maybe we could have a screen flasher that bypasses the game render pipeline. 
+That said with extensive testing and comparing Point Blank MAME with my real PS1, I can zip the aim left-right as fast as possible, firing at the edges
+and it'll always hit them, it doesn't lag behind my hand movement and never fails delivering the shot.
 
 (Trigger>2Frames>1Frame Flash, XY+TriggerStatesSent>2Frames>Game Reaction)
 
