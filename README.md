@@ -103,6 +103,8 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 ### If not using the shield, wiring images:
 
+<img src="docs/schematics.png" width="400">
+
 <img src="docs/psx.png" width="400">
 <img src="docs/Guncon_Voltage.png" width="400">
 
