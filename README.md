@@ -105,7 +105,7 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 <img src="docs/schematics.png" width="600">
 
-The wiring inside a playstation controller cable, for reference.
+The wiring inside a playstation controller cable, male connector, for reference.
 
 <img src="docs/psx.png" width="250">
 
