@@ -136,7 +136,7 @@ Official Guncons behaves correctly, but third-party guns may produce incorrect r
 
 ## Credits
 
-* Original GunconDuino code: [https://github.com/sonik-br/GunconDuino](https://github.com/sonik-br/GunconDuino)
+* Original GunconDuino code by sonik-br: [https://github.com/sonik-br/GunconDuino](https://github.com/sonik-br/GunconDuino)
 * PsxNewLib by SukkoPera: [https://github.com/SukkoPera/PsxNewLib](https://github.com/SukkoPera/PsxNewLib)
 * Modified absmouse by jonathanedgecombe: [https://github.com/jonathanedgecombe/absmouse](https://github.com/jonathanedgecombe/absmouse)
 * ArduinoJoystickLibrary by MHeironimus: [https://github.com/MHeironimus/ArduinoJoystickLibrary](https://github.com/MHeironimus/ArduinoJoystickLibrary)
