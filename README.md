@@ -115,7 +115,7 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 ### If not using the shield (wiring with a playstation controller port, female connector):
 
-<img src="docs/schematics.png" width="600"> <img src="docs/Wiring.jpg" width="300">
+<img src="docs/schematics.png" width="500"> <img src="docs/Wiring.jpg" width="300">
 
 The wiring inside a playstation controller cable, male connector, for reference.
 
@@ -130,9 +130,12 @@ The wiring inside a playstation controller cable, male connector, for reference.
 * [ArduinoJoystickLibrary](https://github.com/MHeironimus/ArduinoJoystickLibrary)
 
 > I have included the libraries in this release. Remove duplicate copies from `ThisPC/Documents/Arduino/libraries/` if present.
+
 > Before flashing, give the Arduino a unique name ID, go to `C:\Program Files (x86)\Arduino\hardware\arduino\avr\boards.txt` and edit the `leonardo.name=` line with whatever name you want (this line is used for Pro Micro as well). 
 Repeat this step if making multipe GunconDuinos.
+
 Flashing tip: If you have trouble flashing the `.ino` to a Pro Micro, try an older Arduino IDE version.
+
 Important: This project is intended for CRTs at standard resolutions and native output setups (CRTEmudriver or similar).
 
 
