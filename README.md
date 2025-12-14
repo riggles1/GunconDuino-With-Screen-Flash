@@ -12,7 +12,7 @@ My CRTEmudriver setup guide that I use for this can be found in the video descri
 
 ---
 
-<img src="docs/Enclosure.jpg" width="400"> <img src="docs/GunconSync.jpg" width="400"> <img src="docs/Wiring.jpg" width="400">
+<img src="docs/Enclosure.jpg" width="400"> <img src="docs/GunconSync.jpg" width="400"> 
 
 ---
 
@@ -116,6 +116,8 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 ### If not using the shield (wiring with a playstation controller port, female connector):
 
 <img src="docs/schematics.png" width="600">
+
+<img src="docs/Wiring.jpg" width="200">
 
 The wiring inside a playstation controller cable, male connector, for reference.
 
