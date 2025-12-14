@@ -115,9 +115,7 @@ You can custom build a circuit with a level shifter and voltage regulator, or ge
 
 ### If not using the shield (wiring with a playstation controller port, female connector):
 
-<img src="docs/schematics.png" width="600">
-
-<img src="docs/Wiring.jpg" width="200">
+<img src="docs/schematics.png" width="600"> <img src="docs/Wiring.jpg" width="200">
 
 The wiring inside a playstation controller cable, male connector, for reference.
 
