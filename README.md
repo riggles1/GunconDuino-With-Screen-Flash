@@ -48,7 +48,7 @@ Press "Trigger" after plugging in for "Absolute Mouse XY mode" (most lightgun ga
 Press "A" after plugging in for "Joystick mode" 
 (Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle) for continous shots to work, still sends mouse clicks for buttons).
 
-Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the Guncon and unstuck the mouse (allows you to use a regular mouse again). 
+Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls, allows you to use a regular mouse again). 
 Press Trigger again to re-enable.
 
 Hold-XY (toggle): Hold **A + B for 2 seconds** to toggle infinite Hold-XY. 
