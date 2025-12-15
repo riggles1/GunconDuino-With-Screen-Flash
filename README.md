@@ -44,11 +44,11 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 Trigger = Left-Click (and keyboard "L" pulse for shader flash)
 A = Right-Click
 B = Middle-Click
-Press "Trigger" immediately after plugging in = "Absolute Mouse XY mode" (most lightgun games use this).
-Press "A" immediately after plugging in = "Joystick mode" 
-(for positional analog guns, still sends mouse clicks for buttons).
+Press "Trigger" after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
+Press "A" after plugging in for "Joystick mode" 
+(Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle) for continous shots to work, still sends mouse clicks for buttons).
 
-Disable/re-enable: Press A+B+Trigger to disable the Guncon and unstuck the mouse (use a regular mouse). 
+Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the Guncon and unstuck the mouse (allows you to use a regular mouse again). 
 Press Trigger again to re-enable.
 
 Hold-XY (toggle): Hold **A + B for 2 seconds** to toggle infinite Hold-XY. 
