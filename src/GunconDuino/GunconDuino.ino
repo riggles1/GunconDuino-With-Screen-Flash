@@ -113,6 +113,7 @@ bool calibrationLocked = false;
 byte triggerPressCount = 0;
 
 // Trigger debounce + l-pulse state
+unsigned long triggerPressDuration = 0;
 bool triggerDown = false;
 unsigned long lastTriggerEventTimeUs = 0;
 bool LpulseActive = false;
@@ -210,7 +211,7 @@ void executeBufferedEvent(const BufferedEvent &ev) {
     }
 }
 
-// Handle trigger input (down-/up-edges). 
+// Handle trigger input (down-/up-edges).
 // Still performs immediate l key pulse on down-edge.
 void handleTrigger() {
     bool pressed = psx.buttonPressed(PSB_CIRCLE);
@@ -222,9 +223,8 @@ void handleTrigger() {
             triggerDown = true;
             lastTriggerEventTimeUs = nowUs;
 
-            // arm buffer-cancel state for this trigger press
-            firstLightSinceTrigger = true;
-            triggerUsedImmediate = false;
+            // Record the duration of the press (if the press is short, no click will be sent)
+            triggerPressDuration = 0;
 
             // Immediate l pulse (This is never buffered)
             Keyboard.press('l');
@@ -235,23 +235,25 @@ void handleTrigger() {
             pushBufferedEvent(EVT_DOWN, nowUs + bufferDelayUs);
         }
     }
-  
+
     // Up-edge detection
     if (!pressed && triggerDown) {
         triggerDown = false;
         lastTriggerEventTimeUs = nowUs;
 
-        if (triggerUsedImmediate) {
-            // This shot switched to immediate mode on first light -> release immediately
-            AbsMouse.release(MOUSE_LEFT);
-        } else {
-            // Buffer the event scheduled at now + bufferDelayUs
+        // Check if the press duration was less than 5ms (skip click if so)
+        if (triggerPressDuration < TRIGGER_DEBOUNCE_US) {
+            // Don't send a click if press was too short (skip the buffer and immediate click)
+            // Just skip the buffered events in this case.
             pushBufferedEvent(EVT_UP, nowUs + bufferDelayUs);
+        } else {
+            // Normal release event
+            pushBufferedEvent(EVT_UP, nowUs + bufferDelayUs);
+            AbsMouse.release(MOUSE_LEFT);
         }
 
-        // reset buffer-cancel state for next trigger press
-        firstLightSinceTrigger = false;
-        triggerUsedImmediate = false;
+        // Reset trigger state
+        triggerPressDuration = 0;
     }
 
     // Non-blocking l pulse release timer
