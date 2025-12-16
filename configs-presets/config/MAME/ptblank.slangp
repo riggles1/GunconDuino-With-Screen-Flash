@@ -1,6 +1,6 @@
 shaders = "1"
 feedback_pass = "0"
-shader0 = "../../shaders/shaders_slang/misc/shaders/color-mangler.slang"
+shader0 = "shaders_slang/misc/shaders/color-mangler.slang"
 alias0 = ""
 wrap_mode0 = "clamp_to_border"
 mipmap_input0 = "false"
@@ -16,3 +16,4 @@ bg = "0.345000"
 blr = "0.065000"
 blg = "0.165000"
 blb = "0.070000"
+
