@@ -58,7 +58,7 @@ const unsigned long POLLING_INTERVAL = 1000U / 500U; // 2 ms (500Hz)
 
 // Trigger debounce + L-pulse timing (microseconds)
 const unsigned long TRIGGER_DEBOUNCE_US = 5000UL;   // 5 ms trigger debounce
-const unsigned long LPULSE_US          = 21000UL;   // 21 ms keyboard l key pulse (for RetroArch's "Shader (Hold)" hotkey, results in a reliable 1 frame flash)
+const unsigned long LPULSE_US          = 24000UL;   // 24 ms keyboard l key pulse (for RetroArch's "Shader (Hold)" hotkey, results in a reliable 1 frame flash)
 
 PsxControllerHwSpi<PIN_PS2_ATT> psx;
 
@@ -174,7 +174,7 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 // hold-XY state
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
-const unsigned long HOLD_XY_US = 34000UL; // 34ms (holds XY for this amount of time after losing light)
+const unsigned long HOLD_XY_US = 35000UL; // 35ms (holds XY for this amount of time after losing light)
 bool holdXYActive = false;
 
 word convertRange(double gcMin, double gcMax, double value) {
@@ -230,6 +230,12 @@ void handleTrigger() {
             Keyboard.press('l');
             LpulseActive = true;
             LpulseStartUs = nowUs;
+
+            // Clear XY-hold state on trigger press (fresh XY required)
+            haveLight = false;
+            holdXYActive = false;
+            lastX = 0;
+            lastY = 0;
 
             // Buffer the DOWN event scheduled at now + bufferDelayUs
             pushBufferedEvent(EVT_DOWN, nowUs + bufferDelayUs);
@@ -567,4 +573,3 @@ void loop() {
         }
     }
 }
-
