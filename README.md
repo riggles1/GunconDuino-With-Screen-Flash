@@ -3,7 +3,7 @@
 PS1 Guncon controller as absolute Mouse coordinates (or Joystick) via Arduino Pro Micro or Leonardo.
 This repository is a fork based on the original work by Matheus Fraguas (sonik-br). 
 
-The goal of this fork was to make the GunconDuino work with RetroArch's "shader (hold)" as a lightgun screen flash .
+The goal of this fork was to make the GunconDuino work with RetroArch's "shader (hold)" lightgun screen flash functionality.
 This ensures XY-coordinates and trigger presses always get sent together. Meaning no more missed shots when shooting at dark areas, no matter how fast you shoot.
 
 Due to emulation lag (setup+config dependent) the built-in flash in games don't work. This solution allows for any lightgun game to work when set up correctly. 
