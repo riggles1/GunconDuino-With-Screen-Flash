@@ -58,7 +58,7 @@ const byte PIN_PS2_ATT = 10;
 const unsigned long POLLING_INTERVAL = 1000U / 500U; // 2 ms (500Hz)
 
 // Trigger debounce + L-pulse timing (microseconds)
-const unsigned long TRIGGER_DEBOUNCE_US = 5000UL;   // 5 ms trigger debounce
+const unsigned long TRIGGER_DEBOUNCE_US = 5000UL;   // 5 ms trigger debounce (prevents the shader flash from being more than 1 frame)
 const unsigned long LPULSE_US          = 19000UL;   // 19 ms keyboard l key pulse (for RetroArch's "Shader (Hold)" hotkey, results in a reliable 1 frame flash)
 
 PsxControllerHwSpi<PIN_PS2_ATT> psx;
@@ -580,3 +580,4 @@ void loop() {
         }
     }
 }
+
