@@ -22,7 +22,7 @@
  * Press GunCon A (Left side) to enable joystick output for XY-coordinates (buttons remain as mouse left-middle-right clicks) 
  * Useful for games that used mechanical analog position guns rather than real lightguns.
  *
- * Hold A+B for 2 full seconds, this will enable the infinite XY-hold mode, this makes it so the cursor never goes off-screen.
+ * Hold A+B for 2 full seconds, this will enable the Freeze/Infinite XY-hold mode, this makes it so the cursor never goes off-screen.
  * The cursor freeze in place after losing light.
  * For games that weren't made with lightgun flashing in mind (IR or positional guns) there's a lot of contiously held shots.
  * With the XY-hold mode you can aim and shoot while holding the trigger, it'll hold your shot in that same coordinate for as long as you hold the trigger.
@@ -574,6 +574,7 @@ void loop() {
         }
     }
 }
+
 
 
 
