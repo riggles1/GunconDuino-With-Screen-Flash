@@ -3,14 +3,14 @@
 PS1 Guncon controller as absolute Mouse coordinates (or Joystick) via Arduino Pro Micro or Leonardo.
 This repository is a fork based on the original work by Matheus Fraguas (sonik-br). 
 
-The goal of this fork was to make the GunconDuino work with a RetroArch lightgun screen flash, "Shader (hold)".
-This ensures XY-coordinates and trigger presses always get sent together. No more missed shots when shooting at dark areas, no matter how fast you shoot.
+The goal of this fork was to make the GunconDuino work with RetroArch's "shader (hold)" as a lightgun screen flash .
+This ensures XY-coordinates and trigger presses always get sent together. Meaning no more missed shots when shooting at dark areas, no matter how fast you shoot.
 
-Due to emulation lag (setup+config dependent) the built-in flash in games doesn't work. The new shader flash allows you to play any gun games when configured correctly. This script is configured for 1-3 frames of emulation lag maximum.
+Due to emulation lag (setup+config dependent) the built-in flash in games don't work. This solution allows for any lightgun game to work when set up correctly. 
 
-Default bufferDelay is 42ms "2.5 frames" which works perfectly with 1-3 frames of lag. This is just a failsafe function as your trigger press gets sent the same instant light is sensed. Meaning, the moment shader flash happens, or earlier if you're aiming at something that's already lit.
+This script is set for 1-3 frames of input lag (maximum), thanks to a bufferDelay that's set to 42ms "2.5 frames". The delay is just a timeout function, your trigger press gets sent the same instant light is sensed. Meaning shots get sent the moment shader flash happens, or earlier if you're aiming at something that's already lit.
 
-The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 42000UL;``` but only resort to this if you can't bring down the input lag down with your own setup. In my own setup I never get more than 2 frames of lag even with polygonal games, using the RA MAME core. But that's only after finding the optimal max swapchain settings etc. 
+The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 42000UL;``` but only resort to this if you can't bring down the setup input lag down. In my own setup I never get more than 2 frames of lag, even with polygonal games with the RA MAME core. But that's only after finding the optimal max swapchain settings etc. 
 
 To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
 
