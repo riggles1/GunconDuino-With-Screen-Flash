@@ -59,7 +59,7 @@ Press "A" after plugging in for "Joystick mode"
 Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls, allows you to use a regular mouse again). 
 Press Trigger again to re-enable.
 
-Hold-XY (toggle): Hold **A + B for 2 seconds** to toggle infinite Hold-XY. 
+XY-Freeze (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 This freezes the last-seen XY coordinates (useful for games that require continuous shooting or are IR-based).
 XY gets updated on every trigger pull (single-screen flash).
 ```
