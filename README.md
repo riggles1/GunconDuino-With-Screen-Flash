@@ -10,7 +10,7 @@ Default bufferDelay is 42ms "2.5 frames" which works perfectly with 1-3 frames o
 
 The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 42000UL;``` but only resort to this if you can't bring down the input lag down with your own setup. In my own setup I never get more than 2 frames of lag even with polygonal games, using the RA MAME core. But that's only after finding the optimal max swapchain settings etc. 
 
-To check that the GunconDuino isn't losing shots. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
+To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
 
 GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
