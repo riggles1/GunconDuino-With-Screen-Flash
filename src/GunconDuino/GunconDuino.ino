@@ -138,7 +138,7 @@ int bufferedQueueHead = 0; // index of next to pop
 int bufferedQueueTail = 0; // index to push
 int bufferedQueueCount = 0;
 
-unsigned long bufferDelayUs = 34000UL; // The delay for the mouse-left-click outputs after trigger press.
+unsigned long bufferDelayUs = 42000UL; // The delay for the mouse-left-click outputs after trigger press.
 
 // queue utilities
 void pushBufferedEvent(BufferedEventType t, unsigned long scheduledUs) {
@@ -574,6 +574,7 @@ void loop() {
         }
     }
 }
+
 
 
 
