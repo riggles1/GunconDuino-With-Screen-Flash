@@ -87,7 +87,19 @@ In the future maybe we could have a screen flasher that bypasses the game render
 That said with extensive testing and comparing Point Blank MAME with my real PS1, I can zip the aim left-right as fast as possible, firing at the edges
 and it'll always hit them, it doesn't lag behind my hand movement and never fails delivering the shot.
 
-(Trigger>2Frames>1Frame Flash, XY+TriggerStatesSent>2Frames>Game Reaction)
+Dark target (with 2 frames of emulation input lag):
+>Trigger press>
+>2Frames emu lag (input for shader)>
+>1Frame Flash, XY+Trigger states sent>
+>2Frames emu lag (input for game)>
+>Game Reaction
+
+Light target (with 2 frames of emulation input lag):
+>Trigger press>
+>XY+Trigger states gotten and sent, can happen in the same frame as the trigger press itself, or the next frame, depends on if XY can be gotten at the point in time that the trigger was pressed.
+>2 Frames (input for game)>
+>game reaction
+
 
 However I've included an optimization where it will instantly send the trigger and XY states if the Guncon already has light before the flash shader.
 Meaning that any moderately bright thing you aim at (a majority of targets), will be down to just 3 frames of input lag.
