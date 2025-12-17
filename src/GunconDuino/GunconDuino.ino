@@ -119,6 +119,7 @@ bool triggerDown = false;
 unsigned long lastTriggerEventTimeUs = 0;
 bool LpulseActive = false;
 unsigned long LpulseStartUs = 0;
+bool Larmed = true;  // allows one L pulse per trigger press
 
 // Buffer-cancel state (for first-light-after-press logic)
 bool firstLightSinceTrigger = false;
@@ -228,9 +229,12 @@ void handleTrigger() {
             triggerPressDuration = 0;
 
             // Immediate l pulse (This is never buffered)
+            if (Larmed) {
             Keyboard.press('l');
             LpulseActive = true;
             LpulseStartUs = nowUs;
+            Larmed = false;   // disarm until trigger release
+            }
 
             // Clear XY-hold state on trigger press (fresh XY required)
             haveLight = false;
@@ -261,6 +265,8 @@ void handleTrigger() {
 
         // Reset trigger state
         triggerPressDuration = 0;
+        // Re-arm L pulse for next trigger press
+        Larmed = true;
     }
 
     // Non-blocking l pulse release timer
@@ -574,10 +580,3 @@ void loop() {
         }
     }
 }
-
-
-
-
-
-
-
