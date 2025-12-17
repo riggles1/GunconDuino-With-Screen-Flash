@@ -35,11 +35,12 @@
  * the coorinates. Just point it at the screen and move from edge to edge, side to side
  * and top to bottom. The values will be stored as min and max, and will be used
  * to calculate the absolute mouse position.
- * It's recommended to use a full screen white image. (in RA you can set the screen flash shader as enabled for this, disable after)
+ * It's recommended to use a full screen white image. 
+ * (in RA you can set the screen flash shader as enabled for this, I recommend setting a controller button toggle per game, check the config folder examples)
  * Once the Trigger has been pressed 5 times, the XY min/max values will be locked from calibration (until Arduino disconnect)
  *
  * For the RetroArch Shader (hold) screen flash function, there's an immediate 24 ms Keyboard 'l' pulse on every trigger hardware press 
- * Hold-XY: When light is lost, keep sending last valid XY for 48 ms (Gives a bit more leeway ensuring shots don't miss, my default is 48ms)
+ * Hold-XY: When light is lost, keep sending last valid XY for 35 ms (Gives a bit more leeway ensuring shots don't miss, my default is 48ms)
  *
  *
  * Trigger = Mouse Left Click (as well as a keyboard "L" key pulse), A = Mouse Right Click, B = Mouse Middle Click
@@ -573,3 +574,4 @@ void loop() {
         }
     }
 }
+
