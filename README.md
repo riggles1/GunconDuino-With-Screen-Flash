@@ -8,7 +8,9 @@ Due to emulation lag (setup dependent) the built-in flash in games didn't match 
 
 Default bufferDelay is 42ms "2.5 frames" which works perfectly with 1-3 frames of lag. This is just a failsafe function as your trigger press gets sent the same instant light is sensed. Meaning, the moment shader flash happens, or earlier if you're aiming at something that's already lit.
 
-The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 42000UL;``` but only resort to this if you can't bring down the input lag down with your own setup, in my own setup I never get more than 2 frames even with polygonal games with the RA MAME core but that's only after finding the optimal max swapchain settings etc. Shoot at a black spot in a game to verify your input lag isn't too high, if the input lag is higher than 3 frames it will not reliably register the shots.
+The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 42000UL;``` but only resort to this if you can't bring down the input lag down with your own setup. In my own setup I never get more than 2 frames of lag even with polygonal games, using the RA MAME core. But that's only after finding the optimal max swapchain settings etc. 
+
+To check that the GunconDuino isn't losing shots. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
 
 GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
