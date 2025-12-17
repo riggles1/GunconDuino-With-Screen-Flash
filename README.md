@@ -71,7 +71,7 @@ XY gets updated on every trigger pull (single-screen flash).
 ## How it works
 
 * On any hardware trigger press the Arduino sends a keyboard **L** pulse (to trigger the shader flash) followed by a buffered mouse click so the game receives valid XY coordinates and a click.
-* Trigger presses are continuously buffered so you can spam the trigger without missing shots.
+* Trigger presses are continuously buffered, meaning that you can spam the trigger without missing shots even if your setup lag is 3 frames.
 * If light is sensed before expected buffer release, it cancels the buffer and releases the shot instantly (the buffer is just a fallback, accommodating for laggier setups)
 * The buffer releases at **42 ms**, which works with 1-3 frames of lag, but if you absolutely have to, you can increase this delay, but inspect your setup lag first.
 * Light sensing has a 34ms leniency window in case light is lost before the trigger press gets sent to the game (XY will always immediately update again at any frame light is sensed, it's just there if light is lost very momentarily, so there's zero latency drawbacks with this).
