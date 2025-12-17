@@ -40,7 +40,7 @@
  * Once the Trigger has been pressed 5 times, the XY min/max values will be locked from calibration (until Arduino disconnect)
  *
  * For the RetroArch Shader (hold) screen flash function, there's an immediate 24 ms Keyboard 'l' pulse on every trigger hardware press 
- * Hold-XY: When light is lost, keep sending last valid XY for 35 ms (Gives a bit more leeway ensuring shots don't miss, my default is 48ms)
+ * Hold-XY: When light is lost, keep sending last valid XY for 35 ms (Gives a bit more leeway ensuring shots don't miss)
  *
  *
  * Trigger = Mouse Left Click (as well as a keyboard "L" key pulse), A = Mouse Right Click, B = Mouse Middle Click
@@ -574,4 +574,5 @@ void loop() {
         }
     }
 }
+
 
