@@ -6,7 +6,7 @@ This repository is a fork based on the original work by Matheus Fraguas (sonik-b
 
 Due to emulation lag (setup dependent) the built-in flash in games didn't match the original GunconDuino timings. The new shader flash allows you to play any gun games when configured correctly. The script is set up for 1-3 frames of emulation lag maximum.
 
-Default bufferDelay is 42ms "2.5 frames" which works perfectly with 1-3 frames of lag, this is a failsafe function as your trigger press will otherwise be sent the instant light is sensed (The moment shader flash happens, or earlier if you were aiming at something that's lit).
+Default bufferDelay is 42ms "2.5 frames" which works perfectly with 1-3 frames of lag. This is just a failsafe function as your trigger press gets sent the same instant light is sensed. Meaning, the moment shader flash happens, or earlier if you were aiming at something that's already lit.
 
 The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 42000UL;``` but only resort to this if you can't bring down the input lag down with your own setup, in my own setup I never get more than 2 frames even with polygonal games with the RA MAME core but that's only after finding the optimal max swapchain settings etc. Shoot at a black spot in a game to verify your input lag isn't too high, if the input lag is higher than 3 frames it will not reliably register the shots.
 
