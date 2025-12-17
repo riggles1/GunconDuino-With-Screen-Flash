@@ -89,12 +89,12 @@ And it'll be down to just 1 frame IF the game is supported by runahead (set to 2
 
 ---
 
-## Misc improvements over original GunconDuino
+## Misc minor improvements over original GunconDuino
 
-* Faster screen XY polling while preserving bottom-of-CRT sensing.
 * Buttons polled independently at maximum rate.
+* Faster screen XY polling while preserving bottom-of-CRT sensing.
 * Joystick mode still sends mouse clicks for A/B/Trigger to not need different MAME mappings.
-* A+B+Trigger disable ensures clicks cannot remain stuck pressed.
+* A+B+Trigger disable can be peformed without pointing it at the screen, it also now ensures clicks cannot remain stuck as pressed.
 
 ---
 
