@@ -36,7 +36,8 @@ My CRTEmudriver setup guide that I use for this can be found in the video descri
 
 * Use native RGB output setups such as **CRTEmudriver** for minimal latency.
 * Use  **d3d11** or **vulkan** (setup and game dependent, 3D games should have ideal latency with vulkan on dual GPU setups, d3d11 is ideal for 2d, both can be 1-2 frames max latency) as the video driver in RetroArch.
-* Adjust the swapchain number (the wrong setting can cost several frames of latency).
+* Adjust `video_max_frame_latency = "3"`(used with d3d11, optimal value for me) `video_max_swapchain_images = "2"` (used with vulkan, optimal value for me). 
+* The wrong values for the settings above can cost several frames of latency, check these values for individual games in the `Preset-configs\config/MAME\` folder.
 * Turn off frame delay to avoid latency variability.
 * Change threaded rendering in both RA and the MAME core options+.ini.
 
