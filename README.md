@@ -91,19 +91,19 @@ Dark target (with 2 frames of emulation input lag):
 
 >Trigger press>
 >
->2Frames emu lag (input for shader)>
+>2 Frames emu lag (input for shader)>
 >
->1Frame Flash, XY+Trigger states sent>
+>1 Frame flash, XY+Trigger states sent>
 >
->2Frames emu lag (input for game)>
+>2 Frames emu lag (input for game)>
 >
 >Game reaction
 
 Light target (with 2 frames of emulation input lag):
 
->Trigger press>
->
->XY+Trigger states gotten and sent, can happen in the same frame as the trigger press itself, or the next frame, depends on if XY can be gotten at the point in time that the trigger was pressed.>
+> Trigger press>
+
+> XY+Trigger states gotten and sent, can happen in the same frame as the trigger press itself, or the next frame, depends on if XY can be gotten at the point in time that the trigger was pressed>
 
 >2 Frames (input for game)>
 
