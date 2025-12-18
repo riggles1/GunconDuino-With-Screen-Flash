@@ -176,7 +176,7 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 // hold-XY state
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
-const unsigned long HOLD_XY_US = 42000UL; // 42ms (holds XY for this amount of time after losing light)
+const unsigned long HOLD_XY_US = 48000UL; // 48ms (holds XY for this amount of time after losing light)
 bool holdXYActive = false;
 
 word convertRange(double gcMin, double gcMax, double value) {
@@ -580,3 +580,4 @@ void loop() {
         }
     }
 }
+
