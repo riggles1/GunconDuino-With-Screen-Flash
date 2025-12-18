@@ -139,7 +139,7 @@ int bufferedQueueHead = 0; // index of next to pop
 int bufferedQueueTail = 0; // index to push
 int bufferedQueueCount = 0;
 
-unsigned long bufferDelayUs = 46000UL; // The delay for the mouse-left-click outputs after trigger press.
+unsigned long bufferDelayUs = 48000UL; // The maximum delay for the mouse-left-click outputs after trigger press. Default 48ms
 
 // queue utilities
 void pushBufferedEvent(BufferedEventType t, unsigned long scheduledUs) {
@@ -176,7 +176,7 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 // hold-XY state
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
-const unsigned long HOLD_XY_US = 48000UL; // 48ms (holds XY for this amount of time after losing light)
+const unsigned long HOLD_XY_US = 51000UL; // 51ms (holds XY for this amount of time after losing light)
 bool holdXYActive = false;
 
 word convertRange(double gcMin, double gcMax, double value) {
@@ -580,4 +580,5 @@ void loop() {
         }
     }
 }
+
 
