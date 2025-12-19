@@ -20,7 +20,7 @@ My CRTEmudriver setup guide that I use for this can be found in the video descri
 
 ---
 
-<img src="docs/Enclosure.jpg" width="400"> <img src="docs/GunconSync.jpg" width="410"> 
+<img src="docs/Enclosure.jpg" width="400"> <img src="docs/GunconSync.jpg" width="412"> 
 
 ---
 
