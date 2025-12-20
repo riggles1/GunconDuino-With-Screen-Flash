@@ -139,7 +139,7 @@ int bufferedQueueHead = 0; // index of next to pop
 int bufferedQueueTail = 0; // index to push
 int bufferedQueueCount = 0;
 
-unsigned long bufferDelayUs = 42000UL; // The maximum delay for the mouse-left-click outputs after trigger press. Default 42ms
+unsigned long bufferDelayUs = 40000UL; // The maximum delay for the mouse-left-click outputs after trigger press. Default 40ms
 
 // queue utilities
 void pushBufferedEvent(BufferedEventType t, unsigned long scheduledUs) {
@@ -176,8 +176,11 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 // hold-XY state
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
-const unsigned long HOLD_XY_US = 51000UL; // 51ms (holds XY for this amount of time after losing light)
+const unsigned long HOLD_XY_US = 35000UL; // 35ms (holds XY for this amount of time after losing light)
+const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 200000UL; // 200ms (cooldown before xyhold can be cleared, for spammed shots)
 bool holdXYActive = false;
+unsigned long lastHoldXYClearUs = 0;
+
 
 word convertRange(double gcMin, double gcMax, double value) {
     double scale = (double)maxMouseValue / (gcMax - gcMin);
@@ -236,11 +239,17 @@ void handleTrigger() {
             Larmed = false;   // disarm until trigger release
             }
 
-            // Clear XY-hold state on trigger press (fresh XY required)
-            haveLight = false;
-            holdXYActive = false;
-            lastX = 0;
-            lastY = 0;
+			unsigned long nowUs = micros();
+
+			if ((long)(nowUs - lastHoldXYClearUs) >= (long)HOLDXY_CLEAR_COOLDOWN_US) {
+			// Clear XY-hold state (cooldown)
+			haveLight = false;
+			holdXYActive = false;
+			lastX = 0;
+			lastY = 0;
+
+			lastHoldXYClearUs = nowUs;
+			}
 
             // Buffer the DOWN event scheduled at now + bufferDelayUs
             pushBufferedEvent(EVT_DOWN, nowUs + bufferDelayUs);
@@ -580,6 +589,3 @@ void loop() {
         }
     }
 }
-
-
-
