@@ -139,7 +139,7 @@ int bufferedQueueHead = 0; // index of next to pop
 int bufferedQueueTail = 0; // index to push
 int bufferedQueueCount = 0;
 
-unsigned long bufferDelayUs = 40000UL; // The maximum delay for the mouse-left-click outputs after trigger press. Default 40ms
+unsigned long bufferDelayUs = 35000UL; // The maximum delay for the mouse-left-click outputs after trigger press. Default 35ms
 
 // queue utilities
 void pushBufferedEvent(BufferedEventType t, unsigned long scheduledUs) {
@@ -177,7 +177,7 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
 const unsigned long HOLD_XY_US = 50000UL; // 50ms (holds XY for this amount of time after losing light)
-const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 200000UL; // 200ms (cooldown before xyhold can be cleared, for spammed shots)
+const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 33000UL; // 33ms (cooldown before xyhold can be cleared, for super spammed shots)
 bool holdXYActive = false;
 unsigned long lastHoldXYClearUs = 0;
 
@@ -589,4 +589,3 @@ void loop() {
         }
     }
 }
-
