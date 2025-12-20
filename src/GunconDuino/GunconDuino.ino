@@ -176,7 +176,7 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 // hold-XY state
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
-const unsigned long HOLD_XY_US = 35000UL; // 35ms (holds XY for this amount of time after losing light)
+const unsigned long HOLD_XY_US = 50000UL; // 50ms (holds XY for this amount of time after losing light)
 const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 200000UL; // 200ms (cooldown before xyhold can be cleared, for spammed shots)
 bool holdXYActive = false;
 unsigned long lastHoldXYClearUs = 0;
@@ -589,3 +589,4 @@ void loop() {
         }
     }
 }
+
