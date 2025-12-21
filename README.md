@@ -49,25 +49,25 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 **Calibration:** Move the gun across a fully lit screen (left-right, top-bottom) to capture min/max screen values. Calibration updates min/max until the trigger is pressed **5 times**, at which point calibration locks. Reconnecting the Arduino requires recalibration.
 
-```
-Trigger = Left-Click (and keyboard "L" pulse for shader flash)
-A = Right-Click
-B = Middle-Click
-Press "Trigger" after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
-Press "A" after plugging in for "Joystick mode" 
-(Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle)
-for continous shots to work, still sends mouse clicks for buttons).
 
-Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls,
-allows you to use a regular mouse again). 
-Press Trigger again to re-enable mouse mode, or press the A-button to enable joystick mode instead.
+>Trigger = Left-Click (and keyboard "L" pulse for shader flash)
+>A = Right-Click
+>B = Middle-Click
+>Press "Trigger" after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
+>Press "A" after plugging in for "Joystick mode" 
+>(Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle)
+>for continous shots to work, still sends mouse clicks for buttons).
 
-XY-Freeze (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
-This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
-see light again or when you screen flash again with the trigger.
-(useful for games that require continuous shooting games that used IR tracking originally.
-It's also necessary for some games with "gattling guns", Crypt Killer that has a gun that strobes the screen at a slow rate,
-XY-freeze mode makes it keep XY-coordinates in-between strobe flashes, so that XY is there when the game asks for position).
+>Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls,
+>allows you to use a regular mouse again). 
+>Press Trigger again to re-enable mouse mode, or press the A-button to enable joystick mode instead.
+
+>XY-Freeze (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
+>This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
+>see light again or when you screen flash again with the trigger.
+>(useful for games that require continuous shooting games that used IR tracking originally.
+>It's also necessary for some games with "gattling guns", Crypt Killer that has a gun that strobes the screen at a slow rate,
+>XY-freeze mode makes it keep XY-coordinates in-between strobe flashes, so that XY is there when the game asks for position).
 ```
 
 **MAME / RetroArch mapping notes:**
@@ -133,23 +133,16 @@ and it'll always hit them, it doesn't lag behind my hand movement and never fail
 Dark target (with 2 frames of emulation input lag):
 
 >Trigger press>
->
 >2 Frames emu lag (input for shader)>
->
 >1 Frame flash, XY+Trigger states sent>
->
 >2 Frames emu lag (input for game)>
->
 >Game reaction
 
 Light target (with 2 frames of emulation input lag):
 
 > Trigger press, either: XY+Trigger states gotten and sent this same frame (if the screen could be sampled this same frame (depends on how far the CRT has drawn the frame)
-
 > Or XY+Trigger states gotten and sent this frame instead
-
 >2 Frames (input for game)>
-
 >Game reaction
 
 
