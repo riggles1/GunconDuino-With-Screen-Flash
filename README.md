@@ -138,17 +138,17 @@ Dark target (with 2 frames of emulation input lag):
 >Trigger press
 >2 Frames emu-lag (input for shader)
 >1 Frame flash, XY+Trigger states sent
->2 Frames emu-lag (input for game)
+>2 Frames emu-lag (inputs sent to game)
 >Game reaction
 ```
 
 Light target (with 2 frames of emulation input lag):
 ```
 >Trigger press
-either: XY+Trigger states gotten and sent this same frame 
+Either: XY+Trigger states gotten and sent this same frame.
 (if the screen could be sampled this same frame, depends on how far the CRT has drawn the frame)
-or XY+Trigger states gotten 1 frame later instead.
->2 Frames (input for game)
+Or XY+Trigger states gotten 1 frame later instead.
+>2 Frames emu-lag (inputs sent to game)
 >Game reaction
 ```
 
