@@ -61,8 +61,8 @@ Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the GunconDuino 
 Press Trigger again to re-enable mouse mode, or press the A-button to enable joystick mode instead.
 
 XY-Freeze (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
-This freezes the last-seen XY coordinates (useful for games that require continuous shooting or are IR-based).
-XY gets updated on every trigger pull (single-screen flash).
+This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can see light again or when you screen flash again with the trigger.
+(useful for games that require continuous shooting games that used IR tracking originally. It's also necessary for some games with "gattling guns", Crypt Killer that has a gun that strobes the screen at a slow rate, XY-freeze mode makes it keep XY-coordinates in-between strobe flashes, so that XY is there when the game asks for position).
 ```
 
 **MAME / RetroArch mapping notes:**
