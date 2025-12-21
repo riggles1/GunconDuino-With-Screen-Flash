@@ -102,9 +102,9 @@ Dark target (with 2 frames of emulation input lag):
 
 Light target (with 2 frames of emulation input lag):
 
-> Trigger press>
+> Trigger press, either: XY+Trigger states gotten and sent this same frame (if the screen could be sampled this same frame (depends on how far the CRT has drawn the frame)
 
-> XY+Trigger states gotten and sent, can happen in the same frame as the trigger press itself, or the next frame, depends on if XY can be gotten at the point in time that the trigger was pressed>
+> Or XY+Trigger states gotten and sent this frame instead
 
 >2 Frames (input for game)>
 
@@ -112,7 +112,7 @@ Light target (with 2 frames of emulation input lag):
 
 
 However I've included an optimization where it will instantly send the trigger and XY states if the Guncon already has light before the flash shader.
-Meaning that any moderately bright thing you aim at (a majority of targets), will be down to just 3 frames of input lag.
+Meaning that any moderately bright thing you aim at (a majority of targets), will be down to just 2-3 frames of input lag.
 And it'll be down to just 1 frame IF the game is supported by runahead (set to 2).
 
 ---
