@@ -70,7 +70,7 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 >  It's also necessary for some games with "gattling guns". 
 >  For example Crypt Killer that has a gun that strobes the screen at a slow rate,
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is there when the game asks for position.
-```
+
 
 **MAME / RetroArch mapping notes:**
 
