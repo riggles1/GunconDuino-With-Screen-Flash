@@ -83,27 +83,27 @@ XY gets updated on every trigger pull (single-screen flash).
 edit the retroarch.cfg accordingly:
 ```
 // Guncon Player 1 Trigger mapping:
-input_player1_gun_trigger_btn = "3" // Joypad button (if you want to also be able to use controller buttons)
+input_player1_gun_trigger_btn = "3" // Regular "gamepad" button
 input_player1_gun_trigger_mbtn = "1" // mousebtn-left-click
 
 // Guncon Player 1 A button mapping:
-input_player1_gun_aux_a_btn = "4" // Joypad button (if you want to also be able to use controller buttons)
+input_player1_gun_aux_a_btn = "4" // Regular "gamepad" button
 input_player1_gun_aux_a_mbtn = "2" // mousebtn-right-click
 
 // Guncon Player 1 B button mapping:
-input_player1_gun_aux_b_btn = "5" // Joypad button (if you want to also be able to use controller buttons)
+input_player1_gun_aux_b_btn = "5" // Regular "gamepad" button
 input_player1_gun_aux_b_mbtn = "3" // mousebtn-middle-click
 
 // Guncon Player 2 Trigger mapping:
-input_player2_gun_trigger_btn = "3" // Joypad button (if you want to also be able to use controller buttons)
+input_player2_gun_trigger_btn = "3" // Regular "gamepad" button
 input_player2_gun_trigger_mbtn = "1" // mousebtn-left-click
 
 // Guncon Player 2 A button mapping:
-input_player2_gun_aux_a_btn = "4" // Joypad button (if you want to also be able to use controller buttons)
+input_player2_gun_aux_a_btn = "4" // Regular "gamepad" button
 input_player2_gun_aux_a_mbtn = "2" // mousebtn-right-click
 
 // Guncon Player 2 B button mapping:
-input_player2_gun_aux_b_btn = "5" // Joypad button (if you want to also be able to use controller buttons)
+input_player2_gun_aux_b_btn = "5" // Regular "gamepad" button
 input_player2_gun_aux_b_mbtn = "3" // mousebtn-middle-click
 
 // Guncon shader flash activation (L is used for the MAME core etc. as well)
