@@ -212,7 +212,7 @@ The wiring inside a playstation controller cable, male connector, for reference.
 
 
 
-Official Guncons behaves correctly, but third-party guns may produce incorrect readings (adjusting values in the script may help).
+Official Guncons behave correctly, but third-party guns may produce incorrect readings (adjusting values in the script may help).
 
 ---
 
