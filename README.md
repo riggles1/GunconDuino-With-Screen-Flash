@@ -107,7 +107,6 @@ input_player2_gun_aux_a_mbtn = "2" // mousebtn-right-click
 input_player2_gun_aux_b_btn = "5" // Joypad button (if you want to also be able to use controller buttons)
 input_player2_gun_aux_b_mbtn = "3" // mousebtn-middle-click
 
-
 // Guncon shader flash activation (L is used for the MAME core etc. as well)
 input_shader_hold = "l"
 ```
