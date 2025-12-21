@@ -73,6 +73,45 @@ XY gets updated on every trigger pull (single-screen flash).
 * In RetroArch's MAME core input settings, map **GunX** and **GunY** (do NOT map as MouseX/MouseY).
 * You will likely need to manually edit the RetroArch and MAME-core configs, mapping via the built-in configurators may not add the required lightgun axes.
 
+**PCSX-ReARMed (PS1, RetroArch) mapping notes**
+This core supports rawinput mouse input for guncons, meaning two players are supported (I couldn't get guncons working with swanstation)
+This following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons, those inputs are also mirrored on the P1 and P2 controllers 
+(so that you can do the trigger+A+B combo to exit the arcade mode in Point Blank, as this combo otherwise disables the guncon)
+
+I've included what settings I use in order to make PS1 lightgun games never miss an input ```video_driver = "d3d11", video_max_frame_latency = "1, video_frame_delay_auto = "true, video_frame_delay = "3"```
+Runahead works with PCSX-ReARMed, I've set it to 1 in the configs incuded in this package.
+
+edit the retroarch.cfg accordingly:
+```
+// Guncon Player 1 Trigger mapping:
+input_player1_gun_trigger_btn = "3" // Joypad button (if you want to also be able to use controller buttons)
+input_player1_gun_trigger_mbtn = "1" // mousebtn-left-click
+
+// Guncon Player 1 A button mapping:
+input_player1_gun_aux_a_btn = "4" // Joypad button (if you want to also be able to use controller buttons)
+input_player1_gun_aux_a_mbtn = "2" // mousebtn-right-click
+
+// Guncon Player 1 B button mapping:
+input_player1_gun_aux_b_btn = "5" // Joypad button (if you want to also be able to use controller buttons)
+input_player1_gun_aux_b_mbtn = "3" // mousebtn-middle-click
+
+// Guncon Player 2 Trigger mapping:
+input_player2_gun_trigger_btn = "3" // Joypad button (if you want to also be able to use controller buttons)
+input_player2_gun_trigger_mbtn = "1" // mousebtn-left-click
+
+// Guncon Player 2 A button mapping:
+input_player2_gun_aux_a_btn = "4" // Joypad button (if you want to also be able to use controller buttons)
+input_player2_gun_aux_a_mbtn = "2" // mousebtn-right-click
+
+// Guncon Player 2 B button mapping:
+input_player2_gun_aux_b_btn = "5" // Joypad button (if you want to also be able to use controller buttons)
+input_player2_gun_aux_b_mbtn = "3" // mousebtn-middle-click
+
+
+// Guncon shader flash activation (L is used for the MAME core etc. as well)
+input_shader_hold = "l"
+```
+
 ---
 
 ## How it works
