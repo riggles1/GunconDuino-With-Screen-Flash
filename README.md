@@ -74,12 +74,12 @@ XY gets updated on every trigger pull (single-screen flash).
 * You will likely need to manually edit the RetroArch and MAME-core configs, mapping via the built-in configurators may not add the required lightgun axes.
 
 **PCSX-ReARMed (PS1, RetroArch) mapping notes**
-This core supports rawinput mouse input for guncons, meaning two players are supported (I couldn't get guncons working with swanstation)
-This following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons, those inputs are also mirrored on the P1 and P2 controllers 
+* This core supports rawinput mouse input for guncons, meaning two players are supported (I couldn't get guncons working with swanstation)
+* The following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons, those inputs are also mirrored on the P1 and P2 controllers 
 (so that you can do the trigger+A+B combo to exit the arcade mode in Point Blank, as this combo otherwise disables the guncon)
 
-I've included what settings I use in order to make PS1 lightgun games never miss an input ```video_driver = "d3d11", video_max_frame_latency = "1, video_frame_delay_auto = "true, video_frame_delay = "3"```
-Runahead works with PCSX-ReARMed, I've set it to 1 in the configs incuded in this package.
+* I've included what settings I use in order to make PS1 lightgun games never miss an input ```video_driver = "d3d11", video_max_frame_latency = "1, video_frame_delay_auto = "true, video_frame_delay = "3"```
+* Runahead works with PCSX-ReARMed, I've set it to 1 in the configs incuded in this package.
 
 edit the retroarch.cfg accordingly:
 ```
