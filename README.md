@@ -134,19 +134,22 @@ and it'll always hit them, it doesn't lag behind my hand movement and never fail
 
 Dark target (with 2 frames of emulation input lag):
 
->Trigger press>
->2 Frames emu lag (input for shader)>
->1 Frame flash, XY+Trigger states sent>
->2 Frames emu lag (input for game)>
+```
+>Trigger press
+>2 Frames emu-lag (input for shader)
+>1 Frame flash, XY+Trigger states sent
+>2 Frames emu-lag (input for game)
 >Game reaction
+```
 
 Light target (with 2 frames of emulation input lag):
-
-> Trigger press, either: XY+Trigger states gotten and sent this same frame (if the screen could be sampled this same frame (depends on how far the CRT has drawn the frame)
-> Or XY+Trigger states gotten and sent this frame instead
->2 Frames (input for game)>
+```
+>Trigger press
+either: XY+Trigger states gotten and sent this same frame (if the screen could be sampled this same frame (depends on how far the CRT has drawn the frame)
+or XY+Trigger states gotten 1 frame later instead
+>2 Frames (input for game)
 >Game reaction
-
+```
 
 However I've included an optimization where it will instantly send the trigger and XY states if the Guncon already has light before the flash shader.
 Meaning that any moderately bright thing you aim at (a majority of targets), will be down to just 2-3 frames of input lag.
