@@ -58,7 +58,7 @@ Press "A" after plugging in for "Joystick mode"
 (Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle) for continous shots to work, still sends mouse clicks for buttons).
 
 Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls, allows you to use a regular mouse again). 
-Press Trigger again to re-enable.
+Press Trigger again to re-enable mouse mode, or press the A-button to enable joystick mode instead.
 
 XY-Freeze (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 This freezes the last-seen XY coordinates (useful for games that require continuous shooting or are IR-based).
@@ -124,7 +124,8 @@ And it'll be down to just 1 frame IF the game is supported by runahead (set to 2
 * 5ms debounce, preventing double trigger click and "l" key shader flash activation.
 * Joystick mode still sends mouse clicks for A/B/Trigger to not need different MAME mappings.
 * A+B+Trigger disable can be peformed without pointing it at the screen, it also now ensures clicks cannot remain stuck as pressed.
-* Max-min XY calibration locks after the trigger has been pressed 5 times (at any point the counter reaches 5 presses)
+* You can enable either joystick mode or mouse mode after the A+B+Trigger disable. 
+* Max-min XY calibration locks after the trigger has been pressed 10 times (at any point the counter reaches 10 presses)
 
 ---
 
