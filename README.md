@@ -106,7 +106,7 @@ input_player2_gun_aux_a_mbtn = "2" // mousebtn-right-click (mouse ID 2)
 input_player2_gun_aux_b_btn = "5" // Regular "gamepad" button
 input_player2_gun_aux_b_mbtn = "3" // mousebtn-middle-click (mouse ID 2)
 
-// Guncon shader flash activation (L is used for the MAME core etc. as well)
+// Guncon shader flash activation (shader flash in any core, you can include this within an .cfg override instead, as I've done in my example configs)
 input_shader_hold = "l"
 ```
 
