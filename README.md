@@ -84,27 +84,27 @@ edit the retroarch.cfg accordingly:
 ```
 // Guncon Player 1 Trigger mapping:
 input_player1_gun_trigger_btn = "3" // Regular "gamepad" button
-input_player1_gun_trigger_mbtn = "1" // mousebtn-left-click
+input_player1_gun_trigger_mbtn = "1" // mousebtn-left-click (mouse ID 1)
 
 // Guncon Player 1 A button mapping:
 input_player1_gun_aux_a_btn = "4" // Regular "gamepad" button
-input_player1_gun_aux_a_mbtn = "2" // mousebtn-right-click
+input_player1_gun_aux_a_mbtn = "2" // mousebtn-right-click (mouse ID 1)
 
 // Guncon Player 1 B button mapping:
 input_player1_gun_aux_b_btn = "5" // Regular "gamepad" button
-input_player1_gun_aux_b_mbtn = "3" // mousebtn-middle-click
+input_player1_gun_aux_b_mbtn = "3" // mousebtn-middle-click (mouse ID 1)
 
 // Guncon Player 2 Trigger mapping:
 input_player2_gun_trigger_btn = "3" // Regular "gamepad" button
-input_player2_gun_trigger_mbtn = "1" // mousebtn-left-click
+input_player2_gun_trigger_mbtn = "1" // mousebtn-left-click (mouse ID 2)
 
 // Guncon Player 2 A button mapping:
 input_player2_gun_aux_a_btn = "4" // Regular "gamepad" button
-input_player2_gun_aux_a_mbtn = "2" // mousebtn-right-click
+input_player2_gun_aux_a_mbtn = "2" // mousebtn-right-click (mouse ID 2)
 
 // Guncon Player 2 B button mapping:
 input_player2_gun_aux_b_btn = "5" // Regular "gamepad" button
-input_player2_gun_aux_b_mbtn = "3" // mousebtn-middle-click
+input_player2_gun_aux_b_mbtn = "3" // mousebtn-middle-click (mouse ID 2)
 
 // Guncon shader flash activation (L is used for the MAME core etc. as well)
 input_shader_hold = "l"
