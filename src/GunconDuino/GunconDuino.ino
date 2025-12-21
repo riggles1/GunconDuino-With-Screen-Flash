@@ -22,13 +22,13 @@
  * Press GunCon A (Left side) to enable joystick output for XY-coordinates (buttons remain as mouse left-middle-right clicks) 
  * Useful for games that used mechanical analog position guns rather than real lightguns.
  *
- * Hold A+B for 2 full seconds, this will enable the Freeze/Infinite XY-hold mode, this makes it so the cursor never goes off-screen.
- * The cursor freeze in place after losing light.
- * For games that weren't made with lightgun flashing in mind (IR or positional guns) there's a lot of contiously held shots.
+ * To disable the GunCon (unstick the cursor), press A + B + Trigger, after disable;pressing trigger enables mouse mode, A-button enables joystick mode.	
+ *
+ * At any point, Hold A+B for 2 full seconds, this will toggle Infinite XY-hold mode, this makes it so the cursor never goes off-screen.
+ * Meaning the cursor freezes in place after losing light.
+ * Used for games that weren't made with lightgun flashing in mind (IR or positional guns) there's a lot of contiously held shots.
  * With the XY-hold mode you can aim and shoot while holding the trigger, it'll hold your shot in that same coordinate for as long as you hold the trigger.
  * The only other solution to this would be to make all the black levels bright (so light is always seen), or strobe flash (a real headache to look at)
- *
- * To disable the GunCon (unstick the cursor), press A + B + Trigger
  * 
  *
  * The guncon needs to "scan" the entire screen to get XY min/max before it can properly send
@@ -57,9 +57,10 @@ const byte PIN_PS2_ATT = 10;
 // Guncon XY polling interval (Don't make it faster than this, or it will fail to read bottom of CRT relibably)
 const unsigned long POLLING_INTERVAL = 1000U / 500U; // 2 ms (500Hz)
 
-// Trigger debounce + L-pulse timing (microseconds)
+const byte CALIBRATION_LOCK_PRESSES = 10;   // Number of presss before XY calibration gets locked
 const unsigned long TRIGGER_DEBOUNCE_US = 5000UL;   // 5 ms trigger debounce (prevents the shader flash from being more than 1 frame)
 const unsigned long LPULSE_US          = 19000UL;   // 19 ms keyboard l key pulse (for RetroArch's "Shader (Hold)" hotkey, results in a reliable 1 frame flash)
+
 
 PsxControllerHwSpi<PIN_PS2_ATT> psx;
 
@@ -108,6 +109,7 @@ word lastY = 0;
 boolean enableReport = false;
 boolean enableMouseMove = false;
 boolean enableJoystick = false;
+bool awaitingModeSelect = false;
 
 // Calibration lock system (for XY min/max lock after 5 trigger presses)
 bool calibrationLocked = false;
@@ -227,6 +229,13 @@ void handleTrigger() {
         if (nowUs - lastTriggerEventTimeUs >= TRIGGER_DEBOUNCE_US) {
             triggerDown = true;
             lastTriggerEventTimeUs = nowUs;
+			
+			if (!calibrationLocked) {
+			triggerPressCount++;
+				if (triggerPressCount >= CALIBRATION_LOCK_PRESSES) {
+				calibrationLocked = true;
+				}
+			}
 
             // Record the duration of the press (if the press is short, no click will be sent)
             triggerPressDuration = 0;
@@ -344,6 +353,9 @@ void readGuncon() {
         enableReport = false;
         enableMouseMove = false;
         enableJoystick = false;
+		
+		// reset for mouse or joystick mode selection
+		awaitingModeSelect = true;
 
         // reset trigger/buffer-cancel state
         triggerDown = false;
@@ -542,7 +554,28 @@ void loop() {
                         }
                     }
                 }
+// Awaiting mode selection after GunCon disable
+if (awaitingModeSelect) {
 
+    // Trigger -> Mouse mode
+    if (psx.buttonJustPressed(PSB_CIRCLE)) {
+        enableReport = true;
+        enableMouseMove = true;
+        enableJoystick = false;
+        awaitingModeSelect = false;
+        return;
+    }
+
+    // A button -> Joystick mode
+    if (psx.buttonJustPressed(PSB_START)) {
+        enableReport = true;
+        enableJoystick = true;
+        enableMouseMove = false;
+        awaitingModeSelect = false;
+        return;
+    }
+    return; // Ignore everything else while waiting
+}
                 if (!enableReport) {
                     if (!enableMouseMove && !enableJoystick) {
                         if (psx.buttonJustPressed(PSB_CIRCLE)) {
