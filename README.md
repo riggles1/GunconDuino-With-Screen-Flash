@@ -6,7 +6,7 @@ This repository is a fork based on the original work by Matheus Fraguas (sonik-b
 The goal of this fork was to make the GunconDuino work with RetroArch's "shader (hold)" lightgun screen flash functionality.
 This ensures XY-coordinates and trigger presses always get sent together. Meaning no more missed shots when shooting at dark areas, no matter how fast you shoot.
 
-Due to emulation lag (setup+config dependent) the built-in flash in games don't work. This solution allows for any lightgun game to work when set up correctly. 
+Due to emulation lag (setup+config dependent), the built-in flash in games doesn't work. This solution allows for any lightgun game to work when set up correctly. 
 
 This script is set for 1-3 frames of input lag (maximum), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function, your trigger press gets sent the same instant light is sensed. Meaning shots get sent the moment shader flash happens regardless of bufferDelay, or even sent earlier than the flash if you're aiming at something that's already lit.
 
