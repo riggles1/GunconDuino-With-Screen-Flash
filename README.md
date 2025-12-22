@@ -70,8 +70,8 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 >  It's also necessary for some other games such as Crypt Killer which has a gattling gun that strobes the screen at a slow rate,
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
 >
-**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls,
->allows you to use a regular mouse again). 
+**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls)
+
 >Press Trigger again to re-enable mouse mode, or press the A-button to enable joystick mode instead.
 
 **MAME / RetroArch mapping notes:**
