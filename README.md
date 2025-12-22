@@ -51,7 +51,9 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 
 **Trigger** = Left-Click (and keyboard "L" pulse for shader flash)
+
 **A** = Right-Click
+
 **B** = Middle-Click
 
 **Press "Trigger"** after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
