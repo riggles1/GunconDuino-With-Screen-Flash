@@ -10,8 +10,7 @@ Due to emulation lag (setup+config dependent), the built-in flash in games doesn
 With this setup, the physical input lag of your intended shot direction is either sampled the same frame the trigger was pressed (if light is present) or up to 35ms (buffer delay, where screen flash happens), so the lag from a trigger press to XY position on screen is 0-2 frames (60Hz).
 
 This script is set for 1-2 frames of input emu-lag (maximum), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function.
-The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 35000UL;``` but only resort to this if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygonal games with the RA MAME core. But that's only after finding the optimal max swapchain settings etc. 
-Between MAME and PS1 games I've tested on PC, changing around settings have optimized things down to  2 frames of emu-lag for both 2D and 3D games. I've included various configs in this project.
+The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 35000UL;``` but only resort to this if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygnal arcade games or PS1 games. But that's only after finding the optimal max swapchain settings etc. 
 
 To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
 
