@@ -58,7 +58,7 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 **Press "Trigger"** after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
 
-**Press "A"** after plugging in for "Joystick mode"
+**Press "A"** after plugging in for "Joystick mode" (can also be enabled after doing the disable combo)
 >Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle)
 >for continous shots to work, Joystick mode still sends mouse clicks for buttons.
 
