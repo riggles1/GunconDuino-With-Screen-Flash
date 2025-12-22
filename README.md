@@ -129,10 +129,9 @@ input_shader_hold = "l"
 * The buffer releases at **35 ms**, which works with 1-3 frames of lag, but if you absolutely have to, you can increase this delay. But only do this if you've fully optimized your setup and configs for lag first.
 * Light sensing has a 34ms leniency window in case light is lost before the trigger press gets sent to the game (XY will always immediately update again at any frame light is sensed, it's just there if light is lost very momentarily, so there's zero latency drawbacks with this).
 
-* The actual input lag is 2 frames still due to that being the exact moment when your physical aim+trigger is captured. However when shooting at dark targets the game will react 2 frames later.
+* The actual input sensing lag is 2 frames due to that being the exact moment when your physical aim+trigger is captured. However when shooting at dark targets the game will react 2 frames later after this input capture.
 In the future maybe we could have a screen flasher that bypasses the 2 frame game render pipeline. 
-That said with extensive testing and comparing Point Blank MAME with my real PS1, I can zip the aim left-right as fast as possible, firing at the edges
-and it'll always hit them, it shoots where I intend to at high speeds and never fails delivering the shot.
+That said with extensive testing and comparing Point Blank MAME with my real PS1, I can zip the aim left-right as fast as possible, firing at the edges and it'll always hit them, it shoots where I intend to at high speeds and never fails delivering the shot. Largely thanks to the actual moment XY is sampled for the trigger pull is either instantly (light target already there) or at most 35ms later (dark target), additional frames are just the game reacting to the input.
 
 Dark target (with 2 frames of emulation input lag):
 
