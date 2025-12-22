@@ -47,7 +47,7 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 ## Usage & mappings
 
-**Calibration:** Move the gun across a fully lit screen (left-right, top-bottom) to capture min/max screen values. Calibration updates min/max until the trigger is pressed **5 times**, at which point calibration locks. Reconnecting the Arduino requires recalibration.
+**Calibration:** Move the gun across a fully lit screen (left-right, top-bottom) to capture min/max screen values. Calibration updates min/max until the trigger is pressed **10 times**, at which point calibration locks. Reconnecting the Arduino requires recalibration.
 
 
 **Trigger** = Left-Click (and keyboard "L" pulse for shader flash)
