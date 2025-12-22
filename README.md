@@ -86,7 +86,7 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 * This core supports rawinput mouse input for guncons, meaning two players are supported (I couldn't get guncons working with swanstation)
 * Buttons are mapped to plugged in controllers as well the so that you can do the trigger+A+B combo through the controller to exit the arcade mode in Point Blank, as this combo is what otherwise disables the guncon.
 * I've included what settings I use in order to make PS1 lightgun games never miss an input ```video_driver = "d3d11", video_max_frame_latency = "1, video_frame_delay_auto = "true, video_frame_delay = "3"```
-* Runahead works with PCSX-ReARMed, I've set it to 1 in the configs incuded in this package.
+* Runahead works with PCSX-ReARMed, I've set it to 1 in the configs included in this package.
 * The following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons. Inputs are also mirrored on the P1 and P2 controllers.
 
 Edit the retroarch.cfg accordingly:
