@@ -53,8 +53,10 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 **Trigger** = Left-Click (and keyboard "L" pulse for shader flash)
 **A** = Right-Click
 **B** = Middle-Click
-**Press "Trigger"** after plugging in for **Absolute Mouse XY mode** (most lightgun games use this).
-**Press "A"** after plugging in for **Joystick mode** 
+
+**Press "Trigger"** after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
+
+**Press "A"** after plugging in for "Joystick mode"
 >(Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle)
 >for continous shots to work, still sends mouse clicks for buttons).
 
