@@ -129,7 +129,7 @@ input_shader_hold = "l"
 * The buffer releases at **35 ms**, which works with 1-3 frames of lag, but if you absolutely have to, you can increase this delay. But only do this if you've fully optimized your setup and configs for lag first.
 * Light sensing has a 34ms leniency window in case light is lost before the trigger press gets sent to the game (XY will always immediately update again at any frame light is sensed, it's just there if light is lost very momentarily, so there's zero latency drawbacks with this).
 
-* For now, due to the flash shader being in the same render pipeline as the game, it's also affected by the 2 frame lag, so the input lag becomes 5 frames total. 
+* For now, due to the flash shader being in the same render pipeline as the game, it's also affected by the 2 frame lag, so the input lag becomes 5 frames total for dark targets. 
 In the future maybe we could have a screen flasher that bypasses the game render pipeline. 
 That said with extensive testing and comparing Point Blank MAME with my real PS1, I can zip the aim left-right as fast as possible, firing at the edges
 and it'll always hit them, it doesn't lag behind my hand movement and never fails delivering the shot.
