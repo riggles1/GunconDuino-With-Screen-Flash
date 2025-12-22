@@ -50,26 +50,25 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 **Calibration:** Move the gun across a fully lit screen (left-right, top-bottom) to capture min/max screen values. Calibration updates min/max until the trigger is pressed **5 times**, at which point calibration locks. Reconnecting the Arduino requires recalibration.
 
 
->Trigger = Left-Click (and keyboard "L" pulse for shader flash)
->A = Right-Click
->B = Middle-Click
->Press "Trigger" after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
->Press "A" after plugging in for "Joystick mode" 
+**Trigger** = Left-Click (and keyboard "L" pulse for shader flash)
+**A** = Right-Click
+**B** = Middle-Click
+**Press "Trigger"** after plugging in for **Absolute Mouse XY mode** (most lightgun games use this).
+**Press "A"** after plugging in for **Joystick mode** 
 >(Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle)
 >for continous shots to work, still sends mouse clicks for buttons).
 
->Disable/re-enable the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls,
->allows you to use a regular mouse again). 
->Press Trigger again to re-enable mouse mode, or press the A-button to enable joystick mode instead.
-
->XY-Freeze (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
+**XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
 >see light again, something bright on screen or the flash again with the trigger.
 >
 >  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally.
 >  It's also necessary for some other games such as Crypt Killer which has a gattling gun that strobes the screen at a slow rate,
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
-
+>
+**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls,
+>allows you to use a regular mouse again). 
+>Press Trigger again to re-enable mouse mode, or press the A-button to enable joystick mode instead.
 
 **MAME / RetroArch mapping notes:**
 
