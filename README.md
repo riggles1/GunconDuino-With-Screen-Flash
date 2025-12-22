@@ -5,12 +5,13 @@ This repository is a fork based on the original work by Matheus Fraguas (sonik-b
 
 The goal of this fork was to make the GunconDuino work with RetroArch's "shader (hold)" lightgun screen flash functionality.
 This ensures XY-coordinates and trigger presses always get sent together. Meaning no more missed shots when shooting at dark areas, no matter how fast you shoot.
-
 Due to emulation lag (setup+config dependent), the built-in flash in games doesn't work. This solution allows for any lightgun game to work when set up correctly. 
 
-This script is set for 1-3 frames of input lag (maximum), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function, your trigger press gets sent the same instant light is sensed. Meaning shots get sent the moment shader flash happens regardless of bufferDelay, or even sent earlier than the flash if you're aiming at something that's already lit.
+With this setup, the physical input lag of your intended shot direction is either sampled the same frame the trigger was pressed (if light is present) or up to 35ms (buffer delay, where screen flash happens), so the lag from a trigger press to XY position on screen is 0-2 frames (60Hz).
 
+This script is set for 1-2 frames of input emu-lag (maximum), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function.
 The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 35000UL;``` but only resort to this if you can't bring down the setup input lag down. In my own setup I never get more than 2 frames of lag, even with polygonal games with the RA MAME core. But that's only after finding the optimal max swapchain settings etc. 
+Between MAME and PS1 games I've tested on PC, changing around settings have optimized things down to  2 frames of emu-lag for both 2D and 3D games. I've included various configs in this project.
 
 To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
 
