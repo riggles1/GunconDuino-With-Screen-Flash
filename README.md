@@ -64,12 +64,11 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 >XY-Freeze (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
->see light again or when you screen flash again with the trigger.
+>see light again, something bright on screen or the flash again with the trigger.
 >
->  Useful for games that require continuous shooting games that used IR tracking originally.
->  It's also necessary for some games with "gattling guns". 
->  For example Crypt Killer that has a gun that strobes the screen at a slow rate,
->  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is there when the game asks for position.
+>  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally.
+>  It's also necessary for some other games such as Crypt Killer which has a gattling gun that strobes the screen at a slow rate,
+>  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
 
 
 **MAME / RetroArch mapping notes:**
