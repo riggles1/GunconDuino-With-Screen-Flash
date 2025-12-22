@@ -59,8 +59,8 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 **Press "Trigger"** after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
 
 **Press "A"** after plugging in for "Joystick mode"
->(Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle)
->for continous shots to work, still sends mouse clicks for buttons).
+>Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle)
+>for continous shots to work, Joystick mode still sends mouse clicks for buttons.
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
