@@ -87,32 +87,26 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 * Buttons are mapped to plugged in controllers as well the so that you can do the trigger+A+B combo through the controller to exit the arcade mode in Point Blank, as this combo is what otherwise disables the guncon.
 * I've included what settings I use in order to make PS1 lightgun games never miss an input ```video_driver = "d3d11", video_max_frame_latency = "1, video_frame_delay_auto = "true, video_frame_delay = "3"```
 * Runahead works with PCSX-ReARMed, I've set it to 1 in the configs included in this package.
-* The following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons. Inputs are also mirrored on the P1 and P2 controllers.
+* The following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons. Inputs are also mirrored on the P1 and P2 controllers within the PCSX-ReARMed.cfg override in ```\config```.
 
 Edit the retroarch.cfg accordingly:
 ```
 //Guncon Player 1 Trigger mapping:
-  input_player1_gun_trigger_btn = "3"   //Regular "gamepad" button
   input_player1_gun_trigger_mbtn = "1"   //mousebtn-left-click (mouse ID 1)
 
 //Guncon Player 1 A button mapping:
-  input_player1_gun_aux_a_btn = "4"   //Regular "gamepad" button
   input_player1_gun_aux_a_mbtn = "2"   //mousebtn-right-click (mouse ID 1)
 
 //Guncon Player 1 B button mapping:
-  input_player1_gun_aux_b_btn = "5"   //Regular "gamepad" button
   input_player1_gun_aux_b_mbtn = "3"   //mousebtn-middle-click (mouse ID 1)
 
 //Guncon Player 2 Trigger mapping:
-  input_player2_gun_trigger_btn = "3"   //Regular "gamepad" button
   input_player2_gun_trigger_mbtn = "1"   //mousebtn-left-click (mouse ID 2)
 
 //Guncon Player 2 A button mapping:
-  input_player2_gun_aux_a_btn = "4"   //Regular "gamepad" button
   input_player2_gun_aux_a_mbtn = "2"   //mousebtn-right-click (mouse ID 2)
 
 //Guncon Player 2 B button mapping:
-  input_player2_gun_aux_b_btn = "5"   //Regular "gamepad" button
   input_player2_gun_aux_b_mbtn = "3"   //mousebtn-middle-click (mouse ID 2)
 
 //Guncon shader flash activation (any core, you can include this within an .cfg override instead, see example configs)
