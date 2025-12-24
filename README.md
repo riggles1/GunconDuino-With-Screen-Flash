@@ -88,7 +88,7 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 * Runahead works with PCSX-ReARMed, I've set it to 1 in the configs included in this package.
 * The following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons. Inputs are also mirrored on the P1 and P2 controllers within the PCSX-ReARMed.cfg override in ```\config```.
 
-Edit the PCSX-ReARMed.cfg accordingly (already in the included config files):
+Edit the PCSX-ReARMed.cfg accordingly (already set in the included config override):
 ```
 //Guncon Player 1 Trigger mapping:
   input_player1_gun_trigger_mbtn = "1"   //mousebtn-left-click (mouse ID 1)
