@@ -59,14 +59,13 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 **Press "Trigger"** after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
 
 **Press "A"** after plugging in for "Joystick mode" (can also be enabled after doing the disable combo)
->Joystick mode is for positional-analog gun games rather than light ones, remember to enable the Hold-XY mode (toggle)
->for continous shots to work, Joystick mode still sends mouse clicks for buttons.
+>Joystick mode, makes it output as a joystick instead (avoid using this, I still haven't found a usecase for this, since positional lightgun games like Jurassic Park 1994 can be played with FBN instead with abs.mouse mode)
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
 >see light again, something bright on screen or the flash again with the trigger.
 >
->  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally.
+>  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally (like Jurassic Park 1994).
 >  It's also necessary for some other games such as Crypt Killer which has a gattling gun that strobes the screen at a slow rate,
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
 >
