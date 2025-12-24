@@ -88,25 +88,31 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 * Runahead works with PCSX-ReARMed, I've set it to 1 in the configs included in this package.
 * The following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons. Inputs are also mirrored on the P1 and P2 controllers within the PCSX-ReARMed.cfg override in ```\config```.
 
-Edit the retroarch.cfg accordingly:
+Edit the PCSX-ReARMed.cfg accordingly (already in the included config files):
 ```
 //Guncon Player 1 Trigger mapping:
   input_player1_gun_trigger_mbtn = "1"   //mousebtn-left-click (mouse ID 1)
+  input_player1_gun_trigger_btn = "3"
 
 //Guncon Player 1 A button mapping:
   input_player1_gun_aux_a_mbtn = "2"   //mousebtn-right-click (mouse ID 1)
+  input_player1_gun_aux_a_btn = "4"
 
 //Guncon Player 1 B button mapping:
   input_player1_gun_aux_b_mbtn = "3"   //mousebtn-middle-click (mouse ID 1)
+  input_player1_gun_aux_b_btn = "5"
 
 //Guncon Player 2 Trigger mapping:
   input_player2_gun_trigger_mbtn = "1"   //mousebtn-left-click (mouse ID 2)
+  input_player2_gun_trigger_btn = "3"
 
 //Guncon Player 2 A button mapping:
   input_player2_gun_aux_a_mbtn = "2"   //mousebtn-right-click (mouse ID 2)
+  input_player2_gun_aux_b_btn = "5"
 
 //Guncon Player 2 B button mapping:
   input_player2_gun_aux_b_mbtn = "3"   //mousebtn-middle-click (mouse ID 2)
+  input_player2_gun_aux_b_btn = "5"
 
 //Guncon shader flash activation (any core, you can include this within an .cfg override instead, see example configs)
 input_shader_hold = "l"
