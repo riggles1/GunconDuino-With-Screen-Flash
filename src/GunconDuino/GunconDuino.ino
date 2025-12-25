@@ -567,8 +567,8 @@ if (awaitingModeSelect) {
     // A button -> Joystick mode
     if (psx.buttonJustPressed(PSB_START)) {
         enableReport = true;
+		enableMouseMove = true;   // turned into true as I don't need joystick mode anymore
         //enableJoystick = true;  // commented out as I don't need joystick mode anymore
-        enableMouseMove = false;
         awaitingModeSelect = false;
         return;
     }
@@ -584,6 +584,7 @@ if (awaitingModeSelect) {
                         else if (psx.buttonJustPressed(PSB_START)) {
                             enableReport = true;
                             //enableJoystick = true; // commented out as I don't need joystick mode anymore
+							enableMouseMove = true; // added as I don't need joystick mode anymore
                             return;
                         }
                     }
