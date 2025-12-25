@@ -19,8 +19,6 @@
  *
  *
  * Press GunCon Trigger to enable absolute mouse for XY-coordinates.
- * Press GunCon A (Left side) to enable joystick output for XY-coordinates (buttons remain as mouse left-middle-right clicks) 
- * Useful for games that used mechanical analog position guns rather than real lightguns.
  *
  * To disable the GunCon (unstick the cursor), press A + B + Trigger, after disable;pressing trigger enables mouse mode, A-button enables joystick mode.	
  *
@@ -29,7 +27,7 @@
  * Used for games that weren't made with lightgun flashing in mind (IR or positional guns) there's a lot of contiously held shots.
  * With the XY-hold mode you can aim and shoot while holding the trigger, it'll hold your shot in that same coordinate for as long as you hold the trigger.
  * The only other solution to this would be to make all the black levels bright (so light is always seen), or strobe flash (a real headache to look at)
- * 
+ *  (tbh, I wouldn't recommend playing positional analog gun games like Jurassic park 1994 with a lightgun, it's not designed for it)
  *
  * The guncon needs to "scan" the entire screen to get XY min/max before it can properly send
  * the coorinates. Just point it at the screen and move from edge to edge, side to side
@@ -569,7 +567,7 @@ if (awaitingModeSelect) {
     // A button -> Joystick mode
     if (psx.buttonJustPressed(PSB_START)) {
         enableReport = true;
-        enableJoystick = true;
+        //enableJoystick = true;  // commented out as I don't need joystick mode anymore
         enableMouseMove = false;
         awaitingModeSelect = false;
         return;
@@ -585,7 +583,7 @@ if (awaitingModeSelect) {
                         }
                         else if (psx.buttonJustPressed(PSB_START)) {
                             enableReport = true;
-                            enableJoystick = true;
+                            //enableJoystick = true; // commented out as I don't need joystick mode anymore
                             return;
                         }
                     }
@@ -622,4 +620,3 @@ if (awaitingModeSelect) {
         }
     }
 }
-
