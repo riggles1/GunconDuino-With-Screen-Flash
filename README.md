@@ -58,8 +58,8 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 **Press "Trigger"** after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
 
-**Press "A"** after plugging in for "Joystick mode" (can also be enabled after doing the disable combo)
->Joystick mode, makes it output as a joystick instead (avoid using this, I still haven't found a usecase for this, since positional lightgun games like Jurassic Park 1994 can be played with FBN instead with abs.mouse mode)
+**Press "A"** after plugging in for "Joystick mode" (Edit: this feature has been disabled permanently, commented out)
+>Joystick mode, makes it output as a joystick instead (avoid using this, I still haven't found a usecase for this)
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
@@ -71,7 +71,7 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 >
 **Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls)
 
->Press Trigger again to re-enable mouse mode, or press the A-button to enable joystick mode instead.
+>Press Trigger again to re-enable mouse mode.
 
 **MAME / RetroArch mapping notes:**
 
@@ -163,9 +163,7 @@ And it'll be down to just 1 frame IF the game is supported by runahead (set to 2
 * Buttons polled independently at maximum rate.
 * Faster screen XY polling while preserving bottom-of-CRT sensing.
 * 5ms debounce, preventing double trigger click and "l" key shader flash activation.
-* Joystick mode still sends mouse clicks for A/B/Trigger to not need different MAME mappings.
 * A+B+Trigger disable can be peformed without pointing it at the screen, it also now ensures clicks cannot remain stuck as pressed.
-* You can enable either joystick mode or mouse mode after the A+B+Trigger disable. 
 * Max-min XY calibration locks after the trigger has been pressed 10 times (at any point the counter reaches 10 presses)
 
 ---
