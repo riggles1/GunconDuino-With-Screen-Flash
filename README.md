@@ -9,10 +9,11 @@ Due to emulation lag (setup+config dependent), the built-in flash in games doesn
 
 With this setup, the physical input lag of your intended shot direction is either sampled the same frame the trigger was pressed (if light is present) or up to 35ms (buffer delay, where screen flash happens), so the lag from a trigger press to XY position on screen is 0-2 frames (60Hz).
 
-This script is set for 1-2 frames of input emu-lag (maximum), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function.
-The bufferDelay can be set to higher value in the .ino  ```bufferDelayUs = 35000UL;``` but only resort to this if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygnal arcade games or PS1 games. But that's only after finding the optimal max swapchain settings etc. 
+This script is set for 1-2 frames of input emu-lag (maximum, 60Hz), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function, shots are released instantly within 0-35ms as light is sensed.
+There's an alternate mode enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes  ```bufferDelayUs = 60000UL;``` but only resort to this mode if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygnal arcade games or PS1 games. However I use this mode for Carnevil, as that is a 57Hz 256p game, 2 frames at 57Hz take longer than the default 35ms buffer.
 
 To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
+There's also a ```bufferDelayUs = 60000UL;``` mode that accommodates slow setups and 
 
 GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
@@ -56,10 +57,11 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 **B** = Middle-Click
 
-**Press "Trigger"** after plugging in for "Absolute Mouse XY mode" (most lightgun games use this).
+**Press "Trigger"** after plugging or doing the disable combo = default buffer mode **35ms** maximum (for 60Hz 0-2 frame game lag, shots still release as soon as light is sensed within 0-35ms).
 
-**Press "A"** after plugging in for "Joystick mode" (Edit: this feature has been disabled permanently, commented out)
->Joystick mode, makes it output as a joystick instead (avoid using this, I still haven't found a usecase for this)
+**Press "A"** after plugging or doing the disable combo =  extended buffer mode **60ms** maximum (for 55-57Hz 0-3 frame lag, shots still release as soon as light is sensed within 0-60ms).
+
+**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" or "A" after for either buffer mode.
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
@@ -68,10 +70,6 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 >  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally (like Jurassic Park 1994).
 >  It's also necessary for some other games such as Crypt Killer which has a gattling gun that strobes the screen at a slow rate,
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
->
-**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls)
-
->Press Trigger again to re-enable mouse mode.
 
 **MAME / RetroArch mapping notes:**
 
@@ -125,7 +123,7 @@ input_shader_hold = "l"
 * On any hardware trigger press the Arduino sends a keyboard **L** pulse (to trigger the shader flash) followed by a buffered mouse click so the game receives valid XY coordinates and a click.
 * Trigger presses are continuously buffered, meaning that you can spam the trigger without missing shots even if your setup lag is 3 frames.
 * If light is sensed before expected buffer release, it cancels the buffer and releases the shot instantly (the buffer is just a fallback, accommodating for laggier setups)
-* The buffer releases at **35 ms**, which works with 1-3 frames of lag, but if you absolutely have to, you can increase this delay. But only do this if you've fully optimized your setup and configs for lag first.
+* The buffer releases at **35 ms**, which works with 1-2 frames of lag, but if you have to you can use the **60ms** mode meant for lower Hz games like Carnevil (57Hz 256p). But only do this if you've fully optimized your setup and configs for lag first.
 * Light sensing has a 34ms leniency window in case light is lost before the trigger press gets sent to the game (XY will always immediately update again at any frame light is sensed, it's just there if light is lost very momentarily, so there's zero latency drawbacks with this).
 
 * The actual input sensing lag is 2 frames due to that being the exact moment when your physical aim+trigger is captured. However when shooting at dark targets the game will react 2 frames later after this input capture.
