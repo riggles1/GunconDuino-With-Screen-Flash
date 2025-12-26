@@ -1,7 +1,7 @@
 /*******************************************************************************
- * This sketch turns a PSX Guncon controller into a USB absolute mouse
- * or Joystick, using an Arduino Pro Micro (recommended) or Leonardo.
- *
+ * This sketch turns a PSX Guncon controller into a USB absolute mouse device
+ * using an Arduino Pro Micro (recommended) or Leonardo.
+ *                
  * It uses the PsxNewLib, ArduinoJoystickLibrary,
  * a modified version of AbsMouse Library (has to be this version to work), and the
  * Keyboard library (Arduino included default)
@@ -18,9 +18,10 @@
  * Get the libraries and put them in "Documents/Arduino/Libraries"
  *
  *
- * Press GunCon Trigger to enable absolute mouse for XY-coordinates.
- *
- * To disable the GunCon (unstick the cursor), press A + B + Trigger, after disable;pressing trigger enables mouse mode, A-button enables joystick mode.	
+ * Press GunCon Trigger for a 35ms maximum bufferdelay (trigger press is sent instantly when light is sensed, bufferdelay is just a maximum wait).
+ * Press GunCon A-button for a 32ms maximum bufferdelay (added for Carnevil which is a 55Hz 256p game, as well as setups not capable of 2 frame latency).
+ * 
+ * To disable the GunCon (unstick the cursor), press A + B + Trigger, you may then press A or Trigger to select either bufferdelay value again.
  *
  * At any point, Hold A+B for 2 full seconds, this will toggle Infinite XY-hold mode, this makes it so the cursor never goes off-screen.
  * Meaning the cursor freezes in place after losing light.
@@ -106,7 +107,7 @@ word lastY = 0;
 // Mode flags
 boolean enableReport = false;
 boolean enableMouseMove = false;
-boolean enableJoystick = false;
+boolean enableJoystick = false; // joystick mode disabled and commented out elsewhere
 bool awaitingModeSelect = false;
 
 // Calibration lock system (for XY min/max lock after 5 trigger presses)
@@ -139,7 +140,18 @@ int bufferedQueueHead = 0; // index of next to pop
 int bufferedQueueTail = 0; // index to push
 int bufferedQueueCount = 0;
 
-unsigned long bufferDelayUs = 35000UL; // The maximum delay for the mouse-left-click outputs after trigger press. Default 35ms
+unsigned long bufferDelayUs = 0UL; //Buffer delay is set elsewhere, this is the value at boot. 
+//Change the value for the Trigger or A-button press scenarios elsewhere, search for "bufferDelayUs =".
+
+// Set different bufferdelay values with "A" (38ms for a game like Carnevil that's 55Hz) or "Trigger" (35ms default)
+enum ReactivationSource { 
+    REACT_NONE = 0,
+    REACT_TRIGGER,
+    REACT_A
+};
+
+ReactivationSource lastReactSource = REACT_NONE;
+
 
 // queue utilities
 void pushBufferedEvent(BufferedEventType t, unsigned long scheduledUs) {
@@ -350,7 +362,7 @@ void readGuncon() {
         releaseAllButtons();
         enableReport = false;
         enableMouseMove = false;
-        enableJoystick = false;
+        // enableJoystick = false; // joystick mode disabled
 		
 		// reset for mouse or joystick mode selection
 		awaitingModeSelect = true;
@@ -359,6 +371,7 @@ void readGuncon() {
         triggerDown = false;
         firstLightSinceTrigger = false;
         triggerUsedImmediate = false;
+        lastReactSource = REACT_NONE; //For bufferdelay millisecond selection (A=38ms, Trigger=35ms), every guncon disable wipes selection.
 
         delay(1000);
         return;
@@ -474,7 +487,7 @@ void readDualShock() {
         releaseAllButtons();
         enableReport = false;
         enableMouseMove = false;
-        enableJoystick = false;
+        // enableJoystick = false; // joystick mode disabled
         delay(1000);
     }
 }
@@ -555,36 +568,46 @@ void loop() {
 // Awaiting mode selection after GunCon disable
 if (awaitingModeSelect) {
 
-    // Trigger -> Mouse mode
+    // Trigger -> Mouse mode -> 35ms buffer delay selection
     if (psx.buttonJustPressed(PSB_CIRCLE)) {
         enableReport = true;
         enableMouseMove = true;
-        enableJoystick = false;
+        //enableJoystick = false; commented out as I don't need joystick mode anymore
+        bufferDelayUs = 35000UL; //Bufferdelay set to 35ms (2 frames 60Hz)
+        lastReactSource = REACT_TRIGGER; 
         awaitingModeSelect = false;
         return;
     }
 
-    // A button -> Joystick mode
+    // A button -> Mouse mode -> 38ms buffer delay selection
     if (psx.buttonJustPressed(PSB_START)) {
         enableReport = true;
-		enableMouseMove = true;   // turned into true as I don't need joystick mode anymore
+		    enableMouseMove = true;   // turned into true as I don't need joystick mode anymore
         //enableJoystick = true;  // commented out as I don't need joystick mode anymore
+        bufferDelayUs = 62000UL; //Bufferdelay set to longer to accomodate slower setups or below 60Hz games like Carnevil (55Hz, 256p).
+        lastReactSource = REACT_A;
         awaitingModeSelect = false;
         return;
     }
     return; // Ignore everything else while waiting
 }
                 if (!enableReport) {
+                    // Trigger -> 35ms bufferdelay
                     if (!enableMouseMove && !enableJoystick) {
                         if (psx.buttonJustPressed(PSB_CIRCLE)) {
                             enableReport = true;
                             enableMouseMove = true;
+                            bufferDelayUs = 35000UL; //Bufferdelay set to 35ms (2 frames 60Hz)
+                            lastReactSource = REACT_TRIGGER;
                             return;
                         }
+                        // A-button -> 38ms bufferdelay
                         else if (psx.buttonJustPressed(PSB_START)) {
                             enableReport = true;
                             //enableJoystick = true; // commented out as I don't need joystick mode anymore
-							enableMouseMove = true; // added as I don't need joystick mode anymore
+							              enableMouseMove = true; // added as I don't need joystick mode anymore
+                            bufferDelayUs = 62000UL; //Bufferdelay set for <60Hz games like Carnevil (55Hz) or slower setups
+                            lastReactSource = REACT_A;
                             return;
                         }
                     }
