@@ -19,7 +19,7 @@
  *
  *
  * Press GunCon Trigger for a 35ms maximum bufferdelay (trigger press is sent instantly when light is sensed, bufferdelay is just a maximum wait).
- * Press GunCon A-button for a 32ms maximum bufferdelay (added for Carnevil which is a 55Hz 256p game, as well as setups not capable of 2 frame latency).
+ * Press GunCon A-button for a 60ms maximum bufferdelay (added for Carnevil which is a 55Hz 256p game, as well as setups not capable of 2 frame latency).
  * 
  * To disable the GunCon (unstick the cursor), press A + B + Trigger, you may then press A or Trigger to select either bufferdelay value again.
  *
@@ -584,7 +584,7 @@ if (awaitingModeSelect) {
         enableReport = true;
 		    enableMouseMove = true;   // turned into true as I don't need joystick mode anymore
         //enableJoystick = true;  // commented out as I don't need joystick mode anymore
-        bufferDelayUs = 62000UL; //Bufferdelay set to longer to accomodate slower setups or below 60Hz games like Carnevil (55Hz, 256p).
+        bufferDelayUs = 60000UL; //Bufferdelay set to longer to accomodate slower setups or below 60Hz games like Carnevil (55Hz, 256p).
         lastReactSource = REACT_A;
         awaitingModeSelect = false;
         return;
@@ -606,7 +606,7 @@ if (awaitingModeSelect) {
                             enableReport = true;
                             //enableJoystick = true; // commented out as I don't need joystick mode anymore
 							              enableMouseMove = true; // added as I don't need joystick mode anymore
-                            bufferDelayUs = 62000UL; //Bufferdelay set for <60Hz games like Carnevil (55Hz) or slower setups
+                            bufferDelayUs = 60000UL; //Bufferdelay set for <60Hz games like Carnevil (55Hz) or slower setups
                             lastReactSource = REACT_A;
                             return;
                         }
