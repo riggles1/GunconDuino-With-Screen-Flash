@@ -10,7 +10,7 @@ Due to emulation lag (setup+config dependent), the built-in flash in games doesn
 With this setup, the physical input lag of your intended shot direction is either sampled the same frame the trigger was pressed (if light is present) or up to 35ms (buffer delay, where screen flash happens), so the lag from a trigger press to XY position on screen is 0-2 frames (60Hz).
 
 This script is set for 1-2 frames of input emu-lag (maximum, 60Hz), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function, shots are released instantly within 0-35ms as light is sensed.
-There's an alternate mode enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes  ```bufferDelayUs = 55000UL;``` but only resort to this mode if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygnal arcade games or PS1 games. However I use this alternate buffer mode for Carnevil, as that is a 57Hz 256p game, 2 frames at 57Hz take longer than 35ms buffer.
+There's an alternate mode enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes  ```bufferDelayUs = 55000UL;``` but only resort to this mode if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygnal arcade games or PS1 games. However I use this alternate buffer mode for Carnevil, as that is a 57Hz 256p game, 2 frames at 57Hz take longer than the 35ms buffer.
 
 To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
 
