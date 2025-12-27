@@ -10,10 +10,9 @@ Due to emulation lag (setup+config dependent), the built-in flash in games doesn
 With this setup, the physical input lag of your intended shot direction is either sampled the same frame the trigger was pressed (if light is present) or up to 35ms (buffer delay, where screen flash happens), so the lag from a trigger press to XY position on screen is 0-2 frames (60Hz).
 
 This script is set for 1-2 frames of input emu-lag (maximum, 60Hz), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function, shots are released instantly within 0-35ms as light is sensed.
-There's an alternate mode enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes  ```bufferDelayUs = 60000UL;``` but only resort to this mode if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygnal arcade games or PS1 games. However I use this mode for Carnevil, as that is a 57Hz 256p game, 2 frames at 57Hz take longer than the default 35ms buffer.
+There's an alternate mode enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes  ```bufferDelayUs = 55000UL;``` but only resort to this mode if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygnal arcade games or PS1 games. However I use this alternate buffer mode for Carnevil, as that is a 57Hz 256p game, 2 frames at 57Hz take longer than 35ms buffer.
 
 To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
-There's also a ```bufferDelayUs = 60000UL;``` mode that accommodates slow setups and 
 
 GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
@@ -59,9 +58,9 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 **Press "Trigger"** after plugging or doing the disable combo = default buffer mode **35ms** maximum (for 60Hz 0-2 frame game lag, shots still release as soon as light is sensed within 0-35ms).
 
-**Press "A"** after plugging or doing the disable combo =  extended buffer mode **60ms** maximum (for 55-57Hz 0-3 frame lag, shots still release as soon as light is sensed within 0-60ms).
+**Press "A"** after plugging or doing the disable combo =  extended buffer mode **55ms** maximum (for 55-57Hz 0-3 frame lag, shots still release as soon as light is sensed within 0-55ms).
 
-**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" or "A" after for either buffer mode.
+**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), hold either "Trigger" or "A" after disabling to reselect buffer mode.
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
