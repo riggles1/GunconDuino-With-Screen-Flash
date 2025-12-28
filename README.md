@@ -58,16 +58,16 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 **Press "Trigger"** after plugging or doing the disable combo = default buffer mode **35ms** maximum (for 60Hz 0-2 frame game lag, shots still release as soon as light is sensed within 0-35ms).
 
-**Press "A"** after plugging or doing the disable combo =  extended buffer mode **55ms** maximum (for 55-57Hz 0-3 frame lag, shots still release as soon as light is sensed within 0-58ms).
+**Press and hold "A" 2s** after plugging or doing the disable combo =  extended buffer mode **55ms** maximum (for 55-57Hz 0-3 frame lag, shots still release as soon as light is sensed within 0-58ms).
 
-**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), hold either "Trigger" or "A" after disabling to reselect buffer mode.
+**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" or "A" (hold 2 seconds) after disabling to select normal or extended buffer modes.
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
 >see light again, something bright on screen or the flash again with the trigger.
 >
 >  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally (like Jurassic Park 1994).
->  It's also necessary for some other games such as Crypt Killer which has a gattling gun that strobes the screen at a slow rate,
+>  It's also necessary for some other games such as Crypt Killer which has a gattling gun that strobes the screen at a slow rate, Carnevil also needs this mode as it has a machine gun.
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
 
 **MAME / RetroArch mapping notes:**
