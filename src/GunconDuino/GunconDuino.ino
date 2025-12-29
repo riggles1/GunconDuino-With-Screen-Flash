@@ -82,14 +82,14 @@ const word maxMouseValue = 32767;
 //x is 77 to 461 (default recommendation)
 //y is 25 to 248 (ntsc). y is 32 to 295 (pal) (default recommendation) 
 
-//from personal testing the values below give me 1:1 guncon-sight to cursor (240p and 480i 60Hz up to 256p55Hz with no overscan)
-//x is 30 to 456.
-//y is 18 to 253.
+//from personal testing the values below give me 1:1 guncon-sight to cursor (240p and 480i 60Hz up to 256p55-57Hz without any overscan)
+//x is 8 to 456.
+//y is 16 to 252.
 
-const unsigned short int minPossibleX = 30;
+const unsigned short int minPossibleX = 8;
 const unsigned short int maxPossibleX = 456;
-const unsigned short int minPossibleY = 18;
-const unsigned short int maxPossibleY = 253;
+const unsigned short int minPossibleY = 16;
+const unsigned short int maxPossibleY = 252;
 
 const byte maxNoLightCount = 10;
 
