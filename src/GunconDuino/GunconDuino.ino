@@ -54,7 +54,7 @@
 const byte PIN_PS2_ATT = 10;
 
 // Guncon XY polling interval (Don't make it faster than this, or it will fail to read bottom of CRT relibably)
-const unsigned long POLLING_INTERVAL = 1000U / 500U; // 2 ms (500Hz)
+const unsigned long POLLING_INTERVAL = 1000U / 450U; // 2.22 ms (500Hz)
 
 const byte CALIBRATION_LOCK_PRESSES = 10;   // Number of presss before XY calibration gets locked
 const unsigned long TRIGGER_DEBOUNCE_US = 5000UL;   // 5 ms trigger debounce (prevents the shader flash from being more than 1 frame)
@@ -85,10 +85,10 @@ const word maxMouseValue = 32767;
 //x is 72 to 450.
 //y is 22 to 248.
 
-const unsigned short int minPossibleX = 72;
-const unsigned short int maxPossibleX = 450;
-const unsigned short int minPossibleY = 25;
-const unsigned short int maxPossibleY = 295;
+const unsigned short int minPossibleX = 66;
+const unsigned short int maxPossibleX = 445;
+const unsigned short int minPossibleY = 19;
+const unsigned short int maxPossibleY = 240;
 
 const byte maxNoLightCount = 10;
 
@@ -644,4 +644,3 @@ if (awaitingModeSelect) {
         }
     }
 }
-
