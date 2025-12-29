@@ -579,7 +579,7 @@ if (awaitingModeSelect) {
         return;
     }
 
-    // A button -> Mouse mode -> 38ms buffer delay selection
+    // A button -> Mouse mode -> Extended bufferdelay
     if (psx.buttonJustPressed(PSB_START)) {
         enableReport = true;
 		    enableMouseMove = true;   // turned into true as I don't need joystick mode anymore
@@ -601,7 +601,7 @@ if (awaitingModeSelect) {
                             lastReactSource = REACT_TRIGGER;
                             return;
                         }
-                        // A-button -> 58ms bufferdelay
+                        // A-button -> Extended bufferdelay
                         else if (psx.buttonJustPressed(PSB_START)) {
                             enableReport = true;
                             //enableJoystick = true; // commented out as I don't need joystick mode anymore
@@ -644,3 +644,4 @@ if (awaitingModeSelect) {
         }
     }
 }
+
