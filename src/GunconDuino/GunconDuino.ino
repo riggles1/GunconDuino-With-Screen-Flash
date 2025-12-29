@@ -54,7 +54,7 @@
 const byte PIN_PS2_ATT = 10;
 
 // Guncon XY polling interval (Don't make it faster than this, or it will fail to read bottom of CRT relibably)
-const unsigned long POLLING_INTERVAL = 1000U / 450U; // 2.22 ms (500Hz)
+const unsigned long POLLING_INTERVAL = 1000U / 500U; // 2ms (500Hz)
 
 const byte CALIBRATION_LOCK_PRESSES = 10;   // Number of presss before XY calibration gets locked
 const unsigned long TRIGGER_DEBOUNCE_US = 5000UL;   // 5 ms trigger debounce (prevents the shader flash from being more than 1 frame)
@@ -80,15 +80,16 @@ const word maxMouseValue = 32767;
 //XY coordinates min and max possible values
 //from document at http://problemkaputt.de/psx-spx.htm#controllerslightgunsnamcoguncon
 //x is 77 to 461 (default recommendation)
-//y is 25 to 248 (ntsc). y is 32 to 295 (pal)
-//from personal testing (240p and 480p 60Hz up to 256p55Hz with no overscan)
-//x is 72 to 450.
-//y is 22 to 248.
+//y is 25 to 248 (ntsc). y is 32 to 295 (pal) (default recommendation) 
 
-const unsigned short int minPossibleX = 66;
-const unsigned short int maxPossibleX = 445;
-const unsigned short int minPossibleY = 19;
-const unsigned short int maxPossibleY = 240;
+//from personal testing the values below give me 1:1 guncon-sight to cursor (240p and 480i 60Hz up to 256p55Hz with no overscan)
+//x is 30 to 456.
+//y is 18 to 253.
+
+const unsigned short int minPossibleX = 30;
+const unsigned short int maxPossibleX = 456;
+const unsigned short int minPossibleY = 18;
+const unsigned short int maxPossibleY = 253;
 
 const byte maxNoLightCount = 10;
 
@@ -579,7 +580,7 @@ if (awaitingModeSelect) {
         return;
     }
 
-    // A button -> Mouse mode -> Extended bufferdelay
+    // A button -> Mouse mode -> Extended buffer delay selection
     if (psx.buttonJustPressed(PSB_START)) {
         enableReport = true;
 		    enableMouseMove = true;   // turned into true as I don't need joystick mode anymore
@@ -644,4 +645,3 @@ if (awaitingModeSelect) {
         }
     }
 }
-
