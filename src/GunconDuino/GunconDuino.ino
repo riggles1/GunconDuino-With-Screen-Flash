@@ -19,7 +19,7 @@
  *
  *
  * Press GunCon Trigger for a 35ms maximum bufferdelay (trigger press is sent instantly when light is sensed, bufferdelay is just a maximum wait).
- * Press GunCon A-button for a 58ms maximum bufferdelay (added for Carnevil which is a 55Hz 256p game, as well as setups not capable of 2 frame latency).
+ * Press GunCon A-button for an extended bufferdelay (added for Carnevil which is a 55Hz 256p game, as well as setups/games not capable of 2 frame latency).
  * 
  * To disable the GunCon (unstick the cursor), press A + B + Trigger, you may then press A or Trigger to select either bufferdelay value again.
  *
@@ -83,12 +83,12 @@ const word maxMouseValue = 32767;
 //y is 25 to 248 (ntsc). y is 32 to 295 (pal) (default recommendation) 
 
 //from personal testing the values below give me 1:1 guncon-sight to cursor (240p and 480i 60Hz up to 256p55-57Hz without any overscan)
-//x is 8 to 456.
+//x is 5 to 455.
 //y is 16 to 252.
 
-const unsigned short int minPossibleX = 8;
-const unsigned short int maxPossibleX = 456;
-const unsigned short int minPossibleY = 16;
+const unsigned short int minPossibleX = 5;
+const unsigned short int maxPossibleX = 455;
+const unsigned short int minPossibleY = 17;
 const unsigned short int maxPossibleY = 252;
 
 const byte maxNoLightCount = 10;
@@ -141,7 +141,7 @@ int bufferedQueueHead = 0; // index of next to pop
 int bufferedQueueTail = 0; // index to push
 int bufferedQueueCount = 0;
 
-unsigned long bufferDelayUs = 0UL; //Buffer delay is set elsewhere, this is the value at boot. 
+unsigned long bufferDelayUs = 34000UL; //Buffer delay is set elsewhere, this is the value at boot. 
 //Change the value for the Trigger or A-button press scenarios elsewhere, search for "bufferDelayUs =".
 
 // Set different bufferdelay values with "A" (58ms for a game like Carnevil that's 55Hz) or "Trigger" (35ms default)
@@ -190,7 +190,7 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
 const unsigned long HOLD_XY_US = 50000UL; // 50ms (holds XY for this amount of time after losing light)
-const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 33000UL; // 33ms (cooldown before xyhold can be cleared, for super spammed shots)
+const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 69000UL; // 69ms (cooldown before xyhold can be cleared, for super spammed shots)
 bool holdXYActive = false;
 unsigned long lastHoldXYClearUs = 0;
 
@@ -585,7 +585,7 @@ if (awaitingModeSelect) {
         enableReport = true;
 		    enableMouseMove = true;   // turned into true as I don't need joystick mode anymore
         //enableJoystick = true;  // commented out as I don't need joystick mode anymore
-        bufferDelayUs = 58000UL; //Bufferdelay set to longer to accomodate slower setups or below 60Hz games like Carnevil (55Hz, 256p).
+        bufferDelayUs = 68000UL; //Bufferdelay set to longer to accomodate slower setups or below 60Hz games like Carnevil (55Hz, 256p).
         lastReactSource = REACT_A;
         awaitingModeSelect = false;
         return;
@@ -607,7 +607,7 @@ if (awaitingModeSelect) {
                             enableReport = true;
                             //enableJoystick = true; // commented out as I don't need joystick mode anymore
 							              enableMouseMove = true; // added as I don't need joystick mode anymore
-                            bufferDelayUs = 58000UL; //Bufferdelay set for <60Hz games like Carnevil (55Hz) or slower setups
+                            bufferDelayUs = 68000UL; //Bufferdelay set for <60Hz games like Carnevil (55Hz) or slower setups
                             lastReactSource = REACT_A;
                             return;
                         }
