@@ -84,12 +84,12 @@ const word maxMouseValue = 32767;
 
 //from personal testing the values below give me 1:1 guncon-sight to cursor (240p and 480i 60Hz up to 256p55-57Hz without any overscan)
 //x is 5 to 455.
-//y is 16 to 252.
+//y is 16 to 254.
 
-const unsigned short int minPossibleX = 5;
-const unsigned short int maxPossibleX = 455;
-const unsigned short int minPossibleY = 17;
-const unsigned short int maxPossibleY = 252;
+const unsigned short int minPossibleX = 6;
+const unsigned short int maxPossibleX = 494;
+const unsigned short int minPossibleY = 16;
+const unsigned short int maxPossibleY = 254;
 
 const byte maxNoLightCount = 10;
 
@@ -189,8 +189,8 @@ const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
 // hold-XY state
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
-const unsigned long HOLD_XY_US = 50000UL; // 50ms (holds XY for this amount of time after losing light)
-const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 69000UL; // 69ms (cooldown before xyhold can be cleared, for super spammed shots)
+const unsigned long HOLD_XY_US = 80000UL; // 50ms (holds XY for this amount of time after losing light)
+const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 34000UL; // 34ms (cooldown before xyhold can be cleared, for super spammed shots)
 bool holdXYActive = false;
 unsigned long lastHoldXYClearUs = 0;
 
