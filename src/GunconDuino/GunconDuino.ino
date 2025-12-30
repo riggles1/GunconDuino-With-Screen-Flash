@@ -184,13 +184,13 @@ bool popBufferedEvent(BufferedEvent &out) {
 bool infiniteHoldEnabled = false;
 bool infiniteAwaitHoldAB = false;
 unsigned long infiniteHoldStartMs = 0;
-const unsigned long INFINITE_HOLD_TOGGLE_MS = 2000UL; // 2 seconds
+const unsigned long INFINITE_HOLD_TOGGLE_MS = 1500UL; // "2" seconds
 
 // hold-XY state
 bool haveLight = false;                 // whether we currently have valid on-screen coordinates
 unsigned long holdXYStartUs = 0;
-const unsigned long HOLD_XY_US = 80000UL; // 50ms (holds XY for this amount of time after losing light)
-const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 34000UL; // 34ms (cooldown before xyhold can be cleared, for super spammed shots)
+const unsigned long HOLD_XY_US = 80000UL; // 80ms (holds XY for this amount of time after losing light)
+const unsigned long HOLDXY_CLEAR_COOLDOWN_US = 64000UL; // 64ms (cooldown before xyhold can be cleared, for super spammed shots)
 bool holdXYActive = false;
 unsigned long lastHoldXYClearUs = 0;
 
@@ -585,7 +585,7 @@ if (awaitingModeSelect) {
         enableReport = true;
 		    enableMouseMove = true;   // turned into true as I don't need joystick mode anymore
         //enableJoystick = true;  // commented out as I don't need joystick mode anymore
-        bufferDelayUs = 68000UL; //Bufferdelay set to longer to accomodate slower setups or below 60Hz games like Carnevil (55Hz, 256p).
+        bufferDelayUs = 69000UL; //Bufferdelay set to longer to accomodate slower setups or below 60Hz games like Carnevil (55Hz, 256p).
         lastReactSource = REACT_A;
         awaitingModeSelect = false;
         return;
@@ -607,7 +607,7 @@ if (awaitingModeSelect) {
                             enableReport = true;
                             //enableJoystick = true; // commented out as I don't need joystick mode anymore
 							              enableMouseMove = true; // added as I don't need joystick mode anymore
-                            bufferDelayUs = 68000UL; //Bufferdelay set for <60Hz games like Carnevil (55Hz) or slower setups
+                            bufferDelayUs = 69000UL; //Bufferdelay set for <60Hz games like Carnevil (55Hz) or slower setups
                             lastReactSource = REACT_A;
                             return;
                         }
