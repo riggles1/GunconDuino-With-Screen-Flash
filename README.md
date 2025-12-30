@@ -47,7 +47,12 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 ## Usage & mappings
 
-**Calibration:** Move the gun across a fully lit screen (left-right, top-bottom) to capture min/max screen values. Calibration updates min/max until the trigger is pressed **10 times**, at which point calibration locks. Reconnecting the Arduino requires recalibration.
+**Calibration:** Start by standing from the distance you will play at, move the guncon across a fully lit screen fairly slowly (left-right, top-bottom) edge to edge to capture min/max screen values. 
+Then repeat the process with the guncon pointing much closer to the screen. The most accurate readings will be from the first distance you calibrated at.
+Once calibrated, press the trigger **10 times**to lock the calibration (the calibration will also lock itself at any point, whenever the lock counter reaches 10). 
+If the Arduino is disconnected, it requires recalibration. Disable-reenable of the the guncon does not require recalibration.
+
+Some games have their own built in calibration tool, often hidden withing a service menu, research how to do this on a per game basis. Provided savefiles in this project have my own calibrations, test those first.
 
 
 **Trigger** = Left-Click (and keyboard "L" pulse for shader flash)
