@@ -83,7 +83,7 @@ const word maxMouseValue = 32767;
 //y is 25 to 248 (ntsc). y is 32 to 295 (pal) (default recommendation) 
 
 //from personal testing the values below give me 1:1 guncon-sight to cursor (240p and 480i 60Hz up to 256p55-57Hz without any overscan)
-//x is 5 to 455.
+//x is 6 to 494.
 //y is 16 to 254.
 
 const unsigned short int minPossibleX = 6;
