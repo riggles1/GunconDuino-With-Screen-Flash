@@ -1,5 +1,5 @@
 reicast_allow_service_buttons = "enabled"
-reicast_alpha_sorting = "per-strip (fast, least accurate)"
+reicast_alpha_sorting = "per-triangle (normal)"
 reicast_analog_stick_deadzone = "15%"
 reicast_anisotropic_filtering = "off"
 reicast_auto_skip_frame = "disabled"
