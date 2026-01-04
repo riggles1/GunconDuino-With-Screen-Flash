@@ -305,11 +305,11 @@ void handleTrigger() {
             triggerDown = true;
             lastTriggerEventTimeUs = nowUs;
       // Arm buffer-canceling only for "Trigger mode"
-      if (lastReactSource == REACT_TRIGGER) {
+/*      if (lastReactSource == REACT_TRIGGER) {
         firstLightSinceTrigger = true;
         triggerUsedImmediate = false;
       }
-      
+*/      
       if (!calibrationLocked) {
       triggerPressCount++;
         if (triggerPressCount >= CALIBRATION_LOCK_PRESSES) {
@@ -385,7 +385,7 @@ void onLightSensed(word x, word y) {
     holdXYActive = false; // cancel any hold-XY active
     lastX = x;
     lastY = y;
-
+/*
     // Buffer canceling: if trigger is held and this is the first light since press,
     // cancel buffered DOWN for this shot and press immediately.
     if (lastReactSource == REACT_TRIGGER &&
@@ -406,6 +406,7 @@ void onLightSensed(word x, word y) {
         triggerUsedImmediate = true;
         firstLightSinceTrigger = false;
     }
+*/
 }
 
 void readGuncon() {
