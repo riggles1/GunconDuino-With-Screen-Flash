@@ -9,10 +9,15 @@ Due to emulation lag (setup+config dependent), the built-in flash in games doesn
 
 With this setup, the physical input lag of your intended shot direction is either sampled the same frame the trigger was pressed (if light is present) or up to 35ms (buffer delay, where screen flash happens), so the lag from a trigger press to XY position on screen is 0-2 frames (60Hz).
 
-This script is set for 1-2 frames of input emu-lag (maximum, 60Hz), thanks to a bufferDelay that's set to 35ms "2 frames". The delay is just a timeout function, shots are released instantly within 0-35ms as light is sensed.
-There's an alternate mode enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes  ```bufferDelayUs = 58000UL;``` but only resort to this mode if you can't bring down your input lag down. In my own setup I never get more than 2 frames of lag, even with polygnal arcade games or PS1 games. However I use this alternate buffer mode for Carnevil, as that is a 55Hz 256p game, 2 frames at 55Hz take longer than the 35ms buffer.
+This script is set for 1-2 frames of input emu-lag (maximum, 60Hz), thanks to a bufferDelay that's set to 35ms "2 frames". The normal bufferdelay is just a timeout function, shots are released instantly within 0-35ms as light is sensed.
+There are alternate bufferdelay modes enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes longer depending on how many times A was pressed before pulling the trigger.
 
-To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game, if the input lag is higher than 3 frames it will not register every shot.
+ * Press A+B+Trigger to disable the guncon, then:
+ * 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frames)
+ * Finally pull the trigger to confirm the selection. You can at any time disable it and select a different bufferdelay mode.
+ * Set whatever bufferdelay depending on your setup lag, optimal setups will have 1-2 frames of input lag depending on the title, but for something like Carnevil that plays at 55Hz, meaning each frames take longer, in that case set 1+ bufferdelay mode to compensate.
+
+To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game.
 
 GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
@@ -63,6 +68,8 @@ Some games have their own built in calibration tool, often hidden withing a serv
 
 **Press "Trigger"** after plugging or doing the disable combo = default buffer mode **35ms** maximum (for 60Hz 0-2 frame game lag, shots still release as soon as light is sensed within 0-35ms).
 
+**Press A 1-4 times followed "Trigger"** after plugging or doing the disable combo = 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frame-time, 55Hz frames are longer, select a bufferdelay that's +1 in that case)
+
 **Press and hold "A" 2s** after plugging or doing the disable combo =  extended buffer mode **55ms** maximum (for 55-58Hz 0-3 frame lag, shots still release as soon as light is sensed within 0-58ms).
 
 **Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" or "A" (hold 2 seconds) after disabling to select normal or extended buffer modes.
@@ -71,8 +78,8 @@ Some games have their own built in calibration tool, often hidden withing a serv
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
 >see light again, something bright on screen or the flash again with the trigger.
 >
->  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally (like Jurassic Park 1994).
->  It's also necessary for some other games such as Crypt Killer which has a gattling gun that strobes the screen at a slow rate, Carnevil also needs this mode as it has a machine gun.
+>  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally (like Jurassic Park 1994, though honestly it still plays bad with this as that game was made for analog sticks).
+>  It's  necessary for some other games such as Crypt Killer or Carnevil which has a gattling/machine gun that strobes the screen at a slow rate.
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
 
 **MAME / RetroArch mapping notes:**
@@ -89,6 +96,9 @@ Some games have their own built in calibration tool, often hidden withing a serv
 * I've included what settings I use in order to make PS1 lightgun games never miss an input ```video_driver = "d3d11", video_max_frame_latency = "1, video_frame_delay_auto = "true, video_frame_delay = "3"```
 * Runahead works with PCSX-ReARMed, I've set it to 1 in the configs included in this package.
 * The following mappings are necessary for PCSX-ReArmed to recognize the trigger, A and B buttons. Inputs are also mirrored on the P1 and P2 controllers within the PCSX-ReARMed.cfg override in ```\config```.
+
+**Flycast notes**
+If the XY tracking is limited to the top portion of the screen, exit the game/core, disable the GunconDuino (A+B+Trigger), start the game again and enable the guncon while it's running (trigger press, or A button presses then trigger if selecting a different buffedelay).
 
 Edit the PCSX-ReARMed.cfg accordingly (already set in the included config override):
 ```
