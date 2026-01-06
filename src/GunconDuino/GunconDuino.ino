@@ -147,7 +147,7 @@ int bufferedQueueCount = 0;
 
 unsigned long bufferDelayUs = 100UL; //Buffer delay is set elsewhere, this is the value at boot. 
 //Change the value for the Trigger or A-button press scenarios elsewhere, search for "bufferDelayUs =".
-unsigned long holdXYUs = 70000UL;   // further down it's derived from 2x bufferDelayUs, with mode selection
+unsigned long holdXYUs = 35000UL;   // further down it's derived from 2x bufferDelayUs, with mode selection
 
 // Set different bufferdelay values with "A" (58ms for a game like Carnevil that's 55Hz) or "Trigger" (35ms default)
 enum ReactivationSource { 
@@ -199,7 +199,7 @@ void handleModeSelectionButtons() {
         else
           bufferDelayUs = 100000UL; // cap at 104ms ~6 frames 60Hz
       }
-      holdXYUs = (bufferDelayUs * 3); //sets holdXY to be 3.0x the bufferdelay
+      holdXYUs = (bufferDelayUs * 15) / 10; //sets holdXY to be 1.5x the bufferdelay
       
       awaitingModeSelect = false;
       aPressCount = 0; // reset for next time
