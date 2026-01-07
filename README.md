@@ -9,8 +9,8 @@ Due to emulation lag (setup+config dependent), the built-in flash in games doesn
 
 With this setup, the physical input lag of your intended shot direction is either sampled the same frame the trigger was pressed (if light is present) or up to 35ms (buffer delay, where screen flash happens), so the lag from a trigger press to XY position on screen is 0-2 frames (60Hz).
 
-This script is set for 1-2 frames of input emu-lag (maximum, 60Hz), thanks to a bufferDelay that's set to 35ms "2 frames". The normal bufferdelay is just a timeout function, shots are released instantly within 0-35ms as light is sensed.
-There are alternate bufferdelay modes enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes longer depending on how many times A was pressed before pulling the trigger.
+This script is set for 1-2 frames of input emu-lag (maximum at 60Hz, thanks to a bufferDelay that's set to a 35ms, maximum "2 frames".
+There are alternate extended bufferdelay modes enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes longer depending on how many times A was pressed before pulling the trigger.
 
  * Press A+B+Trigger to disable the guncon, then:
  * 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frames)
@@ -41,7 +41,7 @@ My CRTEmudriver setup guide that I use for this can be found in the video descri
 
 * Use native RGB output setups such as **CRTEmudriver** for minimal latency.
 * Use  **d3d11** or **vulkan** as the video driver in RetroArch (setup and game dependent, I use both in my configs, all with optimal latency).
-* Adjust `video_max_frame_latency = "3"`(used with d3d11, optimal value for me) `video_max_swapchain_images = "2"` (used with vulkan, optimal value for me). 
+* Adjust `video_max_frame_latency = "0"`(used with d3d11, optimal value for most things) `video_max_swapchain_images = "2"` (used with vulkan, optimal value for most things). 
 * The wrong values for the settings above can cost several frames of latency, check these values for individual games in the `Preset-configs\config/MAME\` folder.
 * Try with and without frame delay, shoot at dark targets, shoot in the bottom right corner (it should always register).
 * Change threaded rendering in both RA and the MAME core options+.ini.
@@ -69,8 +69,6 @@ Some games have their own built in calibration tool, often hidden withing a serv
 **Press "Trigger"** after plugging or doing the disable combo = default buffer mode **35ms** maximum (for 60Hz 0-2 frame game lag, shots still release as soon as light is sensed within 0-35ms).
 
 **Press A 1-4 times followed "Trigger"** after plugging or doing the disable combo = 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frame-time, 55Hz frames are longer, select a bufferdelay that's +1 in that case)
-
-**Press and hold "A" 2s** after plugging or doing the disable combo =  extended buffer mode **55ms** maximum (for 55-58Hz 0-3 frame lag, shots still release as soon as light is sensed within 0-58ms).
 
 **Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" or "A" (hold 2 seconds) after disabling to select normal or extended buffer modes.
 
