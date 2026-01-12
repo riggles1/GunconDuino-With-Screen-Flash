@@ -17,7 +17,7 @@ There are alternate extended bufferdelay modes enabled by the A-button (at boot 
  * Finally pull the trigger to confirm the selection. You can at any time disable it and select a different bufferdelay mode.
  * Set whatever bufferdelay depending on your setup lag, optimal setups will have 1-2 frames of input lag depending on the title, but for something like Carnevil that plays at 55Hz, meaning each frames take longer, in that case set 1+ bufferdelay mode to compensate.
 
-To check that the GunconDuino isn't losing shots due to lag. Shoot at a black spot in a game.
+To check that the GunconDuino isn't losing shots due to lag. Shoot repeatedly at a black spot in a game.
 
 GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
