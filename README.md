@@ -135,7 +135,7 @@ input_shader_hold = "l"
 * On any hardware trigger press the Arduino sends a keyboard **L** pulse (to trigger the shader flash) followed by a buffered mouse click so the game receives valid XY coordinates and a click.
 * Trigger presses are continuously buffered, meaning that you can spam the trigger without missing shots even if your setup lag is 3 frames.
 * If light is sensed before expected buffer release, it cancels the buffer and releases the shot instantly (the buffer is just a fallback, accommodating for laggier setups)
-* The buffer releases at **35 ms**, which works with 1-2 frames of lag, but if you have to you can use the **60ms** mode meant for lower Hz games like Carnevil (55Hz 256p). But only do this if you've fully optimized your setup and configs for lag first.
+* The buffer releases at **35 ms**, which works with 1-2 frames of lag, but if you have to you can use any of the extended bufferdelay mode meant for lower Hz games like Carnevil (55Hz 256p). But only do this if you've fully optimized your setup and configs for lag first.
 * Light sensing has a 34ms leniency window in case light is lost before the trigger press gets sent to the game (XY will always immediately update again at any frame light is sensed, it's just there if light is lost very momentarily, so there's zero latency drawbacks with this).
 
 * The actual input sensing lag is 2 frames due to that being the exact moment when your physical aim+trigger is captured. However when shooting at dark targets the game will react 2 frames later after this input capture.
