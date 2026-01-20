@@ -57,7 +57,7 @@ Then repeat the process with the guncon pointing much closer to the screen. The 
 Once calibrated, press the trigger **10 times** to lock the calibration (the calibration will also lock itself at any point, whenever the lock counter reaches 10). 
 If the Arduino is disconnected, it requires recalibration. Disable-reenable of the the guncon does not require recalibration.
 
-Some games have their own built in calibration tool, often hidden withing a service menu, research how to do this on a per game basis. Provided savefiles in this project have my own calibrations, test those first.
+Some games have their own built in calibration tool, often hidden within a service menu, look up how to do this is accessed on a per game basis. The provided savefiles in this project have my own calibrations, test with these.
 
 
 **Trigger** = Left-Click (and keyboard "L" pulse for shader flash)
