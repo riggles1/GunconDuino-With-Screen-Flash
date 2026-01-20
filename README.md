@@ -1,6 +1,6 @@
 # GunconDuino v2, With Trigger Screen Flash Support
 
-PS1 Guncon controller as absolute Mouse coordinates (or Joystick) via Arduino Pro Micro or Leonardo.
+PS1 Guncon controller as absolute Mouse coordinates via Arduino Pro Micro or Leonardo.
 This repository is a fork based on the original work by Matheus Fraguas (sonik-br). 
 
 The goal of this fork was to make the GunconDuino work with RetroArch's "shader (hold)" lightgun screen flash functionality.
