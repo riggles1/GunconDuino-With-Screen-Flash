@@ -70,7 +70,7 @@ Some games have their own built in calibration tool, often hidden within a servi
 
 **Press "A" 1-4 times followed "Trigger"** after plugging in or doing the disable combo = 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frame-time, 55Hz frames are longer, select a bufferdelay that's +1 in that case)
 
-**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" or "A" (hold 2 seconds) after disabling to select normal or extended buffer modes.
+**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" for the normal bufferdelay or "A" (1-4 times) then "Trigger" for either of the extended bufferdelays.
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
