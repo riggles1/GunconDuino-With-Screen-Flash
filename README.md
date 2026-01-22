@@ -68,7 +68,7 @@ Some games have their own built in calibration tool, often hidden within a servi
 
 **Press "Trigger"** after plugging or doing the disable combo = default buffer mode **35ms** maximum (for 60Hz 0-2 frame game lag, shots still release as soon as light is sensed within 0-35ms).
 
-**Press A 1-4 times followed "Trigger"** after plugging in or doing the disable combo = 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frame-time, 55Hz frames are longer, select a bufferdelay that's +1 in that case)
+**Press "A" 1-4 times followed "Trigger"** after plugging in or doing the disable combo = 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frame-time, 55Hz frames are longer, select a bufferdelay that's +1 in that case)
 
 **Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" or "A" (hold 2 seconds) after disabling to select normal or extended buffer modes.
 
