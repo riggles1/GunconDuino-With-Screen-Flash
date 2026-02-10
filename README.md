@@ -181,10 +181,9 @@ And it'll be down to just 1 frame IF the game is supported by runahead (set to 2
 ## Build instructions
 
 **Required hardware:**
-* Arduino Pro Micro (USB-C) or Leonardo.
+* Arduino Pro Micro with USB C (recommended) or Arduino Leonardo
 * PS1 accessories operate at **3.3V** (you must use a 5V → 3.3V regulator)
-* **Level shifter** (required, without it the Guncon may be damaged over time)
-* **Arduino Pro Micro** (recommended) or **Arduino Leonardo**
+* Level shifter (required, without it the Guncon may be damaged over time)
 * PS1/PS2 female connector 
 * A suitable enclosure (I used a 80x50x26mm one)
 
