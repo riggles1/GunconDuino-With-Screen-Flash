@@ -13,7 +13,7 @@ This script is set for 1-2 frames of input emu-lag (maximum at 60Hz, thanks to a
 There are alternate extended bufferdelay modes enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes longer depending on how many times A was pressed before pulling the trigger.
 
  * Press A+B+Trigger to disable the guncon, then:
- * 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frames)
+ * 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 4 A presses = 6 frame bufferdelay. (60Hz frames)
  * Finally pull the trigger to confirm the selection. You can at any time disable it and select a different bufferdelay mode.
  * Set whatever bufferdelay depending on your setup lag, optimal setups will have 1-2 frames of input lag depending on the title, but for something like Carnevil that plays at 55Hz, meaning each frame takes longer, in that case set the +1 bufferdelay mode to compensate.
 
