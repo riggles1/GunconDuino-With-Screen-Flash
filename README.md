@@ -9,7 +9,7 @@ Due to emulation lag (setup+config dependent), the built-in flash in games doesn
 
 With this setup, the physical input lag of your intended shot direction is either sampled the same frame the trigger was pressed (if light is present) or up to 35ms (buffer delay, where screen flash happens), so the lag from a trigger press to XY position on screen is 0-2 frames (60Hz).
 
-This script is set for 1-2 frames of input emu-lag (maximum at 60Hz, thanks to a bufferDelay that's set to a 35ms, maximum "2 frames".
+This script is set for 1-2 frames of input emu-lag (maximum at 60Hz, thanks to the bufferDelay that's set to 35ms. A maximum "2 frames".
 There are alternate extended bufferdelay modes enabled by the A-button (at boot or after disabling the GunconDuino with A+B+Trigger), where bufferDelay becomes longer depending on how many times A was pressed before pulling the trigger.
 
  * Press A+B+Trigger to disable the guncon, then:
