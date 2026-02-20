@@ -74,7 +74,7 @@ Some games have their own built in calibration tool, often hidden within a servi
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
->see light again, something bright on screen or the flash again with the trigger.
+>see light again, either something bright enough in the game or the trigger flash.
 >
 >  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally (like Jurassic Park 1994, though honestly it still plays bad with this as that game was made for analog sticks).
 >  It's  necessary for some other games such as Crypt Killer or Carnevil which has a gattling/machine gun that strobes the screen at a slow rate.
