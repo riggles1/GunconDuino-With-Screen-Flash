@@ -60,17 +60,17 @@ If the Arduino is disconnected, it requires recalibration. Disable-reenable of t
 Some games have their own built in calibration tool, often hidden within a service menu, look up how to do this is accessed on a per game basis. The provided savefiles in this project have my own calibrations, test with these.
 
 
-**Trigger** = Left-Click (and keyboard "L" pulse for shader flash)
+**Trigger**: Left-Click (and keyboard "L" pulse for shader flash)
 
-**A** = Right-Click
+**A**: Right-Click
 
-**B** = Middle-Click
+**B**: Middle-Click
 
-**Press "Trigger"** after plugging or doing the disable combo = default buffer mode **35ms** maximum (for 60Hz 0-2 frame game lag, shots still release as soon as light is sensed within 0-35ms).
+**Press "Trigger"** after plugging or doing the disable combo: default buffer mode **35ms** maximum (for 60Hz 0-2 frame game lag, shots still release as soon as light is sensed within 0-35ms).
 
-**Press "A" 1-4 times followed "Trigger"** after plugging in or doing the disable combo = 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frame-time, 55Hz frames are longer, select a bufferdelay that's +1 in that case)
+**Press "A" 1-4 times followed "Trigger"** after plugging in or doing the disable combo: 1 A press = 3 frame bufferdelay, 2 A presses = 4 frame bufferdelay, 3 A presses = 5 frame bufferdelay, 6 A presses = 6 frame bufferdelay. (60Hz frame-time, 55Hz frames are longer, select a bufferdelay that's +1 in that case)
 
-**Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" for the normal bufferdelay or "A" (1-4 times) then "Trigger" for either of the extended bufferdelays.
+To **Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the GunconDuino (unsticks mouse controls), press either "Trigger" for the normal bufferdelay or "A" (1-4 times) then "Trigger" for either of the extended bufferdelays.
 
 **XY-Freeze mode** (toggle): Hold "A + B" for 2 seconds to toggle infinite XY-Freeze. 
 >This freezes XY-coordinates when light (XY) is lost and resumes XY-updates either as soon as the guncon can
