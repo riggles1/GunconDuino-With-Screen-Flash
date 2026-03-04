@@ -173,7 +173,7 @@ And it'll be down to just 1 frame IF the game is supported by runahead (set to 2
 * Buttons polled independently at maximum rate.
 * Faster screen XY polling while preserving bottom-of-CRT sensing.
 * 5ms debounce, preventing double trigger click and extra "L" key shader flash activation.
-* A+B+Trigger disable can be peformed without pointing it at the screen, it also now ensures clicks cannot remain stuck as pressed.
+* A+B+Trigger disable can be peformed without pointing it at the screen, it also now ensures buttons don't get stuck.
 * Max-min XY calibration locks after the trigger has been pressed 10 times (at any point the counter reaches 10 presses)
 
 ---
