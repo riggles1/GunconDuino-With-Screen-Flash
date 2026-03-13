@@ -56,6 +56,7 @@
 #include <Keyboard.h>
 
 const byte PIN_PS2_ATT = 10;
+const byte PIN_EXT_B_BUTTON = 6; // External Pedal that triggers the B button (shorts D6 to GND)
 
 // Guncon XY polling interval (Don't make it faster than this, or it will fail to read bottom of CRT relibably)
 const unsigned long POLLING_INTERVAL = 1000U / 500U; // 2ms (500Hz)
@@ -369,6 +370,18 @@ void handleABbuttons() {
         AbsMouse.press(MOUSE_MIDDLE);
     if (psx.buttonJustReleased(PSB_CROSS))
         AbsMouse.release(MOUSE_MIDDLE);
+	
+	 // External Pedal B button (D6)
+    static bool extBPrev = false;
+    bool extB = (digitalRead(PIN_EXT_B_BUTTON) == LOW);
+
+    if (extB && !extBPrev)
+        AbsMouse.press(MOUSE_MIDDLE);
+
+    if (!extB && extBPrev)
+        AbsMouse.release(MOUSE_MIDDLE);
+
+    extBPrev = extB;
 }
 
 void fastButtonPolling() {
@@ -563,6 +576,7 @@ void setup() {
     usbStick.setYAxisRange(0, maxMouseValue);
 
     Keyboard.begin(); // initialize keyboard
+	pinMode(PIN_EXT_B_BUTTON, INPUT_PULLUP);
     // initialize AbsMouse if required by your edited library (keep original init if needed)
 }
 
