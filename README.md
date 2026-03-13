@@ -19,6 +19,9 @@ There are alternate extended bufferdelay modes enabled by the A-button (at boot 
 
 To check that the GunconDuino isn't losing shots due to lag. Shoot repeatedly at a black spot in a game.
 
+> NEW OPTIONAL FEATURE: Adding a Pedal input.
+> By wiring something like a a 3.5mm port between GND and D6 on the Arduino Pro Micro and plugging in a generic ~$5 sustain pedal, you have an input that mirrors "middle mouse click/Guncon button B", useful for games like Time Crisis that made use of a pedal.
+
 GunconDuino v2 in action: https://www.youtube.com/watch?v=mwm7y__UAsM 
 
 My CRTEmudriver setup guide that I use for this can be found in the video description here: https://youtu.be/Fdo5z1mQ748
@@ -80,7 +83,7 @@ To **Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the Gunco
 >  It's  necessary for some other games such as Crypt Killer or Carnevil which has a gattling/machine gun that strobes the screen at a slow rate.
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
 >
-> NEW OPTIONAL FEATURE: Adding a Pedal input.
+> Adding a Pedal input.
 > By wiring something like a a 3.5mm port between GND and D6 on the Arduino Pro Micro and plugging in a generic ~$5 sustain pedal, you have an input that mirrors "middle mouse click/Guncon button B", useful for games like Time Crisis that made use of a pedal.
 
 **MAME / RetroArch mapping notes:**
@@ -178,7 +181,7 @@ And it'll be down to just 1 frame IF the game is supported by runahead (set to 2
 * 5ms debounce, preventing double trigger click and extra "L" key shader flash activation.
 * A+B+Trigger disable can be peformed without pointing it at the screen, it also now ensures buttons don't get stuck.
 * Max-min XY calibration locks after the trigger has been pressed 10 times (at any point the counter reaches 10 presses)
-
+* External pedal support (momentary switch wired between D6 and GND)
 ---
 
 ## Build instructions
