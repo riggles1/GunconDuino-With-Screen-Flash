@@ -25,7 +25,7 @@ My CRTEmudriver setup guide that I use for this can be found in the video descri
 
 ---
 
-<img src="docs/Enclosure.jpg" width="400"> <img src="docs/GunconSync.jpg" width="411"> 
+<img src="docs/Enclosure.jpg" width="400"> <img src="docs/GunconSync.jpg" width="411"> <img src="docs/3.5mmPedal.jpg" width="411"> 
 
 ---
 
@@ -79,6 +79,9 @@ To **Disable/re-enable** the GunconDuino: Press A+B+Trigger to disable the Gunco
 >  Useful for games that require continuous shooting, games that used IR or analog stick tracking originally (like Jurassic Park 1994, though honestly it still plays bad with this as that game was made for analog sticks).
 >  It's  necessary for some other games such as Crypt Killer or Carnevil which has a gattling/machine gun that strobes the screen at a slow rate.
 >  XY-freeze-mode makes it keep XY-coordinates in-between strobe flashes, so that XY is always there when the game asks for position.
+>
+> NEW OPTIONAL FEATURE: Adding a Pedal input.
+> By wiring something like a a 3.5mm port between GND and D6 on the Arduino Pro Micro and plugging in a generic ~$5 sustain pedal, you have an input that mirrors "middle mouse click/Guncon button B", useful for games like Time Crisis that made use of a pedal.
 
 **MAME / RetroArch mapping notes:**
 
