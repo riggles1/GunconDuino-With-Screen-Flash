@@ -44,6 +44,7 @@ My CRTEmudriver setup guide that I use for this can be found in the video descri
 * Save the shader for the game, then disable it in the game's override config: `video_shader_enable = "false"` in `gamename.cfg`.
 * Use the **rawmouse** input driver, this allows using two GunconDuino units for 2-player games.
 * Select the Arduino (might be called Leonardo) as your mouse device ID. 
+* If playing a 480i game, disable the guncon first with the disable button combo, then boot up the game. Not doing this can result in the shot output only covering the top half of the screen.
 
 ### Latency and video driver recommendations
 
