@@ -61,8 +61,8 @@ Preset configs for this setup are included in the `Preset-configs` folder, copy 
 
 ## Usage & mappings
 
-**Calibration:** Start by standing from the distance you will play at, move the guncon across a fully lit screen fairly slowly (left-right, top-bottom) edge to edge to capture min/max screen values. 
-Then repeat the process with the guncon pointing much closer to the screen. The most accurate readings will be from the first distance you calibrated at.
+**Calibration:** Start by standing from the distance you will play at, move the guncon across a fully lit screen fairly slowly (left-right, top-bottom) edge to edge to capture min/max screen values (you can use the screen-flash-shader for a full white screen, by setting a shader "toggle" hotkey in retroarch). 
+The most accurate readings will be from the distance you calibrated at.
 Once calibrated, press the trigger **10 times** to lock the calibration (the calibration will also lock itself at any point, whenever the lock counter reaches 10). 
 If the Arduino is disconnected, it requires recalibration. Disable-reenable of the the guncon does not require recalibration.
 
